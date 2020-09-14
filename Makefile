@@ -6,7 +6,7 @@
 #    By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/27 02:42:41 by lmartin           #+#    #+#              #
-#    Updated: 2019/12/04 17:28:05 by lmartin          ###   ########.fr        #
+#    Updated: 2020/09/14 11:04:53 by mkravetz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,7 @@ DIR_SRCS =		./srcs/
 
 DIR_OBJS =		./
 
-LIBMLX =		libmlx.dylib \
-				libmlx.a
-
-SAVE =			-fsanitize=address
+SEG =			-fsanitize=address
 
 SRC =			maths/rotation.c \
 				maths/vector_calculation.c \
@@ -78,7 +75,7 @@ SRC =			maths/rotation.c \
 
 SRCS =			$(addprefix $(DIR_SRCS), $(SRC))
 
-COMPIL =		$(FLAGS) $(SAVE)
+COMPIL =		$(FLAGS)
 
 OBJS =			$(SRCS:.c=.o)
 
@@ -98,6 +95,9 @@ bonus:
 norme:
 				norminette $(DIR_SRCS)
 				norminette $(DIR_HEADERS)
+
+seg:			$(OBJS)
+				$(CC) $(COMPIL) -I $(DIR_HEADERS) $(OBJS) $(MLXFLAGS) $(SEG) -o $(NAME)
 
 clean:
 				$(RM) $(OBJS)
