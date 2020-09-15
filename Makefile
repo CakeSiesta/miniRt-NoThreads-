@@ -6,11 +6,11 @@
 #    By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/27 02:42:41 by lmartin           #+#    #+#              #
-#    Updated: 2020/09/14 11:04:53 by mkravetz         ###   ########.fr        #
+#    Updated: 2020/09/15 10:36:57 by mkravetz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC =			gcc
+CC =			gcc -g
 
 FLAGS =			-Wall -Wextra -Werror
 
@@ -24,7 +24,7 @@ DIR_SRCS =		./srcs/
 
 DIR_OBJS =		./
 
-SEG =			-fsanitize=address
+SAVE =			-fsanitize=address
 
 SRC =			maths/rotation.c \
 				maths/vector_calculation.c \
@@ -75,7 +75,7 @@ SRC =			maths/rotation.c \
 
 SRCS =			$(addprefix $(DIR_SRCS), $(SRC))
 
-COMPIL =		$(FLAGS)
+COMPIL =		$(FLAGS) $(SAVE)
 
 OBJS =			$(SRCS:.c=.o)
 
@@ -95,9 +95,6 @@ bonus:
 norme:
 				norminette $(DIR_SRCS)
 				norminette $(DIR_HEADERS)
-
-seg:			$(OBJS)
-				$(CC) $(COMPIL) -I $(DIR_HEADERS) $(OBJS) $(MLXFLAGS) $(SEG) -o $(NAME)
 
 clean:
 				$(RM) $(OBJS)
