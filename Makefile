@@ -6,7 +6,7 @@
 #    By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/27 02:42:41 by lmartin           #+#    #+#              #
-#    Updated: 2020/09/15 10:36:57 by mkravetz         ###   ########.fr        #
+#    Updated: 2020/09/15 14:57:36 by mkravetz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ DIR_SRCS =		./srcs/
 
 DIR_OBJS =		./
 
-SAVE =			-fsanitize=address
+SAVE =			-fsanitize=thread -g
 
 SRC =			maths/rotation.c \
 				maths/vector_calculation.c \
