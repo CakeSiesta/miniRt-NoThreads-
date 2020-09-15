@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 21:05:57 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:55:47 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/14 12:32:23 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		setup_cameras(t_scene **scene)
 	(*scene)->nb_camera = nb_cam;
 }
 
-// sets/fixes/tweeks  resolution
+// sets/fixes/tweeks resolution
 void		setup_viewplane(t_scene **scene)
 {
 	if (!(*scene)->viewport)
@@ -74,9 +74,9 @@ void		setup_viewplane(t_scene **scene)
 		(*scene)->viewport->width = LIMIT_RES_X; // resets too big X res
 	if ((*scene)->viewport->height > LIMIT_RES_Y)
 		(*scene)->viewport->height = LIMIT_RES_Y; // resets too big Y res
-	if ((*scene)->viewport->height < (*scene)->viewport->width) // adjusts width && height
-		(*scene)->viewplane = new_canvas((*scene)->viewport->width /
-(*scene)->viewport->height, 1, 1);
+	if ((*scene)->viewport->height < (*scene)->viewport->width)
+		(*scene)->viewplane = new_canvas((*scene)->viewport->width / // adjusts width && height
+		(*scene)->viewport->height, 1, 1);
 	else
 		(*scene)->viewplane = new_canvas(1, (*scene)->viewport->height /
 (*scene)->viewport->width, 1);
@@ -84,7 +84,7 @@ void		setup_viewplane(t_scene **scene)
 
 t_scene		*parsing(int fd)
 {
-	int			ret;
+	int				ret;
 	char			*line;
 	t_scene			*scene;
 

@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 02:43:38 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 17:08:47 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/14 14:55:57 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_mlx	*init_my_mlx(t_scene *scene)
 int		main(int argc, char *argv[])
 {
 	t_mlx			*my_mlx;
-	int				fd;
+	int				fd;            //uninitialized value???
 	t_scene			*scene;
 	int				i;
 

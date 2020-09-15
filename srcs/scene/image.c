@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 21:57:29 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 17:10:07 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/15 11:45:31 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,19 @@ y * (args->scene->viewplane->height / args->scene->viewport->height), 1);
 ** Init a new t_args with all arguments for thread_function
 */
 
-t_args	*new_s_args(t_mlx *my_mlx, int i, pthread_mutex_t *lock)
-{
-	t_args			*args;
+	t_args	*new_s_args(t_mlx *my_mlx, int i, pthread_mutex_t *lock)
+	{
+		t_args			*args;
 
-	if (!(args = malloc(sizeof(t_args))))
-		print_error_and_exit(-7);
-	args->data = my_mlx->data;
-	args->scene = cpy_scene(my_mlx->scene);
-	args->x = -(my_mlx->scene->viewport->width / 2) + 1 + i;
-	args->bpp = my_mlx->bpp;
-	args->size_line = my_mlx->size_line;
-	args->lock = lock;
-	return (args);
+		if (!(args = malloc(sizeof(t_args))))
+			print_error_and_exit(-7);
+		args->data = my_mlx->data;
+		args->scene = cpy_scene(my_mlx->scene);
+		args->x = -(my_mlx->scene->viewport->width / 2) + 1 + i;
+		args->bpp = my_mlx->bpp;
+		args->size_line = my_mlx->size_line;
+		args->lock = lock;
+		return (args);
 }
 
 /*
@@ -89,10 +89,10 @@ t_args	*new_s_args(t_mlx *my_mlx, int i, pthread_mutex_t *lock)
 
 void	create_image(t_mlx *my_mlx)
 {
-	int			i;
+	int				i;
 	t_args			*args;
 	pthread_t		*threads;
-	pthread_mutex_t 	lock;
+	pthread_mutex_t lock;
 
 	if (!(threads = malloc(sizeof(pthread_t) * my_mlx->scene->viewport->width)))
 		print_error_and_exit(-7);

@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 21:20:25 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:54:19 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/14 14:07:24 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ typedef	struct	s_mlx
 	void	*win_ptr;
 	void	*mlx_img;
 	char	*data;
-	int	bpp;
-	int	size_line;
-	int	endian;
+	int		bpp;
+	int		size_line;
+	int		endian;
 	t_scene *scene;
 }				t_mlx;
 
