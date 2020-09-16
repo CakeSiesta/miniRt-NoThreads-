@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 00:59:45 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:50:14 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/16 15:59:06 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,18 +91,27 @@ int			free_cpy_scene(t_scene *scene)
 	t_lstobjects	*objects;
 
 	i = -1;
+	printf("nb_camera ==[%d]\n", scene->nb_camera);
 	while (++i < scene->nb_camera)
 	{
-		cameras = scene->cameras->next;
-		free(scene->cameras);
+		printf("cameras ==[%p]\n", cameras);
+		if (scene->cameras->next != NULL)
+		{
+			printf("heloooo\n");
+			cameras = scene->cameras->next;
+		}
+		if (scene->cameras)
+			free(scene->cameras);
 		scene->cameras = cameras;
 	}
 	objects = scene->objects;
+	printf("cameras ==[%p]\n", objects);
 	while (objects)
 	{
 		objects = objects->next;
 		free_cpy_scene_choice(scene);
-		free(scene->objects);
+		if (objects)
+			free(scene->objects);
 		scene->objects = objects;
 	}
 	free(scene);

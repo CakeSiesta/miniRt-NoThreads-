@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 21:57:29 by lmartin           #+#    #+#             */
-/*   Updated: 2020/09/15 11:45:31 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/09/16 15:59:07 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,10 @@ void	create_image(t_mlx *my_mlx)
 
 	if (!(threads = malloc(sizeof(pthread_t) * my_mlx->scene->viewport->width)))
 		print_error_and_exit(-7);
-	if (pthread_mutex_init(&lock, NULL) != 0)
+	if (pthread_mutex_init(&lock, NULL) != 0) //reminder::: Actually use mutex_lock!!
 		pthread_error(-9); // mutex init failed
 	i = -1;
+	printf("coucou\n");
 	while (++i < my_mlx->scene->viewport->width)
 	{
 		args = new_s_args(my_mlx, i, &lock);
@@ -111,5 +112,7 @@ void	create_image(t_mlx *my_mlx)
 	pthread_mutex_destroy(&lock);
 	i = my_mlx->scene->viewport->width;
 	while (--i)
+	{
 		wait(NULL);
+	}
 }
