@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 21:57:29 by lmartin           #+#    #+#             */
-/*   Updated: 2020/09/16 15:59:07 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/09/17 15:45:19 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ y * (args->scene->viewplane->height / args->scene->viewport->height), 1);
 /*
 ** Init a new t_args with all arguments for thread_function
 */
-
-	t_args	*new_s_args(t_mlx *my_mlx, int i, pthread_mutex_t *lock)
-	{
+t_args	*new_s_args(t_mlx *my_mlx, int i, pthread_mutex_t *lock)
+{
 		t_args			*args;
 
 		if (!(args = malloc(sizeof(t_args))))
 			print_error_and_exit(-7);
+		//printf("mlx data is %s\n", my_mlx->data);
 		args->data = my_mlx->data;
 		args->scene = cpy_scene(my_mlx->scene);
 		args->x = -(my_mlx->scene->viewport->width / 2) + 1 + i;
@@ -91,24 +91,25 @@ void	create_image(t_mlx *my_mlx)
 {
 	int				i;
 	t_args			*args;
-	pthread_t		*threads;
-	pthread_mutex_t lock;
+	pthread_t		*threads; // pthread_t  used to identify a thread
+	pthread_mutex_t lock; // pthread_mutex_t  used for mutexes
 
 	if (!(threads = malloc(sizeof(pthread_t) * my_mlx->scene->viewport->width)))
 		print_error_and_exit(-7);
-	if (pthread_mutex_init(&lock, NULL) != 0) //reminder::: Actually use mutex_lock!!
+	if (pthread_mutex_init(&lock, NULL) != 0) //reminder::: Actually use mutex_lock!! // init lock with NULL value
 		pthread_error(-9); // mutex init failed
 	i = -1;
 	printf("coucou\n");
 	while (++i < my_mlx->scene->viewport->width)
 	{
+		printf("cccoucou[%d]\n", i);
 		args = new_s_args(my_mlx, i, &lock);
 		if (pthread_create(&threads[i], NULL, &thread_function, args))
-			pthread_error(-10);
+			pthread_error(-10); // pthread creation failded
 	}
 	while (i--)
 		if (pthread_join(threads[i], NULL))
-			pthread_error(-11);
+			pthread_error(-11); // pthread join fail
 	pthread_mutex_destroy(&lock);
 	i = my_mlx->scene->viewport->width;
 	while (--i)
