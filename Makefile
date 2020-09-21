@@ -6,17 +6,19 @@
 #    By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/27 02:42:41 by lmartin           #+#    #+#              #
-#    Updated: 2020/09/17 14:46:41 by jherrald         ###   ########.fr        #
+#    Updated: 2020/09/21 17:15:54 by jherrald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC =			gcc -g
+CC =			gcc
 
 FLAGS =			-Wall -Wextra -Werror
 
-MLXFLAGS = 		-I minilibx -lmlx -framework OpenGL -framework AppKit
-
 RM =			rm -rf
+
+MLX_FLAGS =		-I minilibx -lmlx -framework OpenGL -framework AppKit
+
+SAVE =			-fsanitize=address
 
 DIR_HEADERS =	./includes/
 
@@ -24,7 +26,7 @@ DIR_SRCS =		./srcs/
 
 DIR_OBJS =		./
 
-SAVE =			
+SAVE =			-fsanitize=address
 
 SRC =			maths/rotation.c \
 				maths/vector_calculation.c \
@@ -84,7 +86,7 @@ NAME =			miniRT
 all:			$(NAME)
 
 $(NAME) :		$(OBJS)
-				$(CC) $(COMPIL) -I $(DIR_HEADERS) $(OBJS) $(MLXFLAGS) -o $(NAME)
+				$(CC) $(FLAGS) $(SAVE) -I $(DIR_HEADERS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
 
 %.o: %.c
 				@gcc $(FLAGS) -I $(DIR_HEADERS) -c $< -o $@

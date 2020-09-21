@@ -20,7 +20,7 @@ t_scene		*new_empty_scene(int color)
 	t_scene	*scene;
 
 	if (!(scene = malloc(sizeof(t_scene))))
-		print_error_and_exit(-7); //memory prob
+		print_error_and_exit(-7);
 	scene->viewport = NULL;
 	scene->viewplane = NULL;
 	scene->cameras = NULL;
@@ -40,7 +40,7 @@ t_lstobjects *lights, int color)
 	t_scene	*scene;
 
 	if (!(scene = malloc(sizeof(t_scene))))
-		print_error_and_exit(-7); // memory prob
+		print_error_and_exit(-7);
 	scene->viewport = NULL;
 	scene->viewplane = NULL;
 	scene->cameras = cameras;

@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 02:43:38 by lmartin           #+#    #+#             */
-/*   Updated: 2020/09/14 14:55:57 by mkravetz         ###   ########.fr       */
+/*   Updated: 2019/12/04 17:08:47 by lmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,34 +27,37 @@ t_mlx	*init_my_mlx(t_scene *scene)
 	t_mlx		*my_mlx;
 
 	if (!(my_mlx = malloc(sizeof(t_mlx))))
-		print_error_and_exit(-7); // memory bug
+		print_error_and_exit(-7);
 	my_mlx->mlx_ptr = mlx_init();
 	my_mlx->scene = scene;
-	my_mlx->mlx_img = mlx_new_image(my_mlx->mlx_ptr, my_mlx->scene->viewport->width, my_mlx->scene->viewport->height);
-	my_mlx->data = mlx_get_data_addr(my_mlx->mlx_img, &my_mlx->bpp, &my_mlx->size_line, &my_mlx->endian);
-	my_mlx->win_ptr = mlx_new_window(my_mlx->mlx_ptr, my_mlx->scene->viewport->width, my_mlx->scene->viewport->height, "miniRT");
+	my_mlx->mlx_img = mlx_new_image(my_mlx->mlx_ptr,
+my_mlx->scene->viewport->width, my_mlx->scene->viewport->height);
+	my_mlx->data = mlx_get_data_addr(my_mlx->mlx_img,
+&my_mlx->bpp, &my_mlx->size_line, &my_mlx->endian);
+	my_mlx->win_ptr = mlx_new_window(my_mlx->mlx_ptr,
+my_mlx->scene->viewport->width, my_mlx->scene->viewport->height, "miniRT");
 	return (my_mlx);
 }
 
 int		main(int argc, char *argv[])
 {
 	t_mlx			*my_mlx;
-	int				fd;            //uninitialized value???
+	int				fd;
 	t_scene			*scene;
 	int				i;
 
 	if (argc < 2 || argc > 3)
-		print_error_and_exit(-9); // wrong nb of arg
-	i = open_and_check_error(argv[1], &fd); //check .rt
+		print_error_and_exit(-9);
+	i = open_and_check_error(argv[1], &fd);
 	if (!(scene = parsing(fd)))
-		print_error_and_exit(-4); // invalid scene description
+		print_error_and_exit(-4);
 	close(fd);
-	my_mlx = init_my_mlx(scene); // fill up my_mlx
+	my_mlx = init_my_mlx(scene);
 	create_image(my_mlx);
-	if (argc == 2) // not save
+	if (argc == 2)
 		start_window(my_mlx);
-	else if (argc == 3 && !(ft_strcmp(argv[2], "-save"))) // if save
+	else if (argc == 3 && !(ft_strcmp(argv[2], "-save")))
 		export_bmp(create_bmp_filename(argv[1], i), my_mlx);
 	else
-		print_error_and_exit(-10); //error with 2d arg
+		print_error_and_exit(-10);
 }

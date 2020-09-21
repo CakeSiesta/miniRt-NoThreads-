@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 21:05:57 by lmartin           #+#    #+#             */
-/*   Updated: 2020/09/16 15:59:09 by mkravetz         ###   ########.fr       */
+/*   Updated: 2019/12/04 16:55:47 by lmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ int			choice_parsing(t_scene **scene, char *line)
 	return (0);
 }
 
-// sets in scene num of cameras
 void		setup_cameras(t_scene **scene)
 {
-	int		nb_cam;
+	int				nb_cam;
 	t_lstobjects	*cameras;
 
 	nb_cam = 0;
@@ -57,26 +56,25 @@ void		setup_cameras(t_scene **scene)
 			nb_cam++;
 			cameras = cameras->next;
 		}
-		cameras->next = (*scene)->cameras; //whut
-		(*scene)->cameras->prev = cameras; // double whuttt
+		cameras->next = (*scene)->cameras;
+		(*scene)->cameras->prev = cameras;
 	}
 	(*scene)->nb_camera = nb_cam;
 }
 
-// sets/fixes/tweeks resolution
 void		setup_viewplane(t_scene **scene)
 {
 	if (!(*scene)->viewport)
-		print_error_and_exit(-5); // resolution not specified
+		print_error_and_exit(-5);
 	if ((*scene)->viewport->height <= 0 || (*scene)->viewport->width <= 0)
-		print_error_and_exit(-6); // cannot create window with value 0
+		print_error_and_exit(-6);
 	if ((*scene)->viewport->width > LIMIT_RES_X)
-		(*scene)->viewport->width = LIMIT_RES_X; // resets too big X res
+		(*scene)->viewport->width = LIMIT_RES_X;
 	if ((*scene)->viewport->height > LIMIT_RES_Y)
-		(*scene)->viewport->height = LIMIT_RES_Y; // resets too big Y res
+		(*scene)->viewport->height = LIMIT_RES_Y;
 	if ((*scene)->viewport->height < (*scene)->viewport->width)
-		(*scene)->viewplane = new_canvas((*scene)->viewport->width / // adjusts width && height
-		(*scene)->viewport->height, 1, 1);
+		(*scene)->viewplane = new_canvas((*scene)->viewport->width /
+(*scene)->viewport->height, 1, 1);
 	else
 		(*scene)->viewplane = new_canvas(1, (*scene)->viewport->height /
 (*scene)->viewport->width, 1);
@@ -97,24 +95,23 @@ t_scene		*parsing(int fd)
 	}
 	if (ret < 0 || (ret = choice_parsing(&scene, line)) < 0)
 		return (NULL);
-	setup_cameras(&scene); // sets in scene num of cameras
-	setup_viewplane(&scene); // sets resolution
+	setup_cameras(&scene);
+	setup_viewplane(&scene);
 	return (scene);
 }
 
-// open .rt file //
 int			open_and_check_error(char *filename, int *fd)
 {
 	int		i;
 
 	if ((*fd = open(filename, O_RDONLY)) <= 0)
-		print_error_and_exit(-1); // no such file in directory // nothing to read
+		print_error_and_exit(-1);
 	i = 0;
-	while (filename[i] != '.' && filename[i]) //increment till . before .rt
+	while (filename[i] != '.' && filename[i])
 		i++;
 	if (!filename[i])
-		print_error_and_exit(-2); // extension needed AKA nothing after try. XX
+		print_error_and_exit(-2);
 	if (i < 3 || ft_strcmp(&filename[i], ".rt"))
-		print_error_and_exit(-3); // invalid extension
+		print_error_and_exit(-3);
 	return (i);
 }
