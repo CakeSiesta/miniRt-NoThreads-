@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 13:01:49 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:55:34 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:28:18 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ t_square *object)
 		if (object->prev_origin)
 			free(object->prev_origin);
 		denom = -(product_vectors(*object->normal, *object->center));
-		object->calcul_a = product_vectors(origin, *object->normal) + denom;
+		object->var_a = product_vectors(origin, *object->normal) + denom;
 		object->prev_origin = cpy_vector(&origin);
 	}
 	alpha = product_vectors(direction, *object->normal);
-	beta = -(object->calcul_a / alpha);
+	beta = -(object->var_a / alpha);
 	if (beta <= 0)
 		return (0);
 	return (intersect_square2(beta, origin, direction, object));

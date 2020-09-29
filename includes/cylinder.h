@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:58:19 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:54:09 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:21:01 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ typedef struct	s_cylinder
 	t_vector	*color;
 	float		shiny;
 	t_vector	*difference;
-	float		calcul_a;
-	float		calcul_c;
-	float		calcul_d;
+	float		var_a;
+	float		var_c;
+	float		var_d;
 	t_vector	*prev_origin;
 }				t_cylinder;
 

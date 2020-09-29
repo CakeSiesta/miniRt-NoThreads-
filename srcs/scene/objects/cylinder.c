@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 19:01:25 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:49:35 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:29:35 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_vector *color)
 	new->color = color;
 	new->shiny = -1;
 	new->difference = NULL;
-	new->calcul_a = 1.0 / product_vectors(*new->orientation, *new->orientation);
+	new->var_a = 1.0 / product_vectors(*new->orientation, *new->orientation);
 	new->prev_origin = NULL;
 	return (new);
 }
@@ -72,9 +72,9 @@ t_cylinder	*cpy_cylinder(t_cylinder *cylinder)
 	new->height = cylinder->height;
 	new->shiny = cylinder->shiny;
 	new->difference = NULL;
-	new->calcul_a = cylinder->calcul_a;
-	new->calcul_c = 0;
-	new->calcul_d = 0;
+	new->var_a = cylinder->var_a;
+	new->var_c = 0;
+	new->var_d = 0;
 	new->prev_origin = NULL;
 	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 05:25:49 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/01 00:22:58 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:29:10 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_plan		*new_plan(t_vector *p, t_vector *v, t_vector *c)
 	plan->normal = v;
 	plan->shiny = -1;
 	plan->color = c;
-	plan->calcul_a = 0;
+	plan->var_a = 0;
 	plan->prev_origin = NULL;
 	return (plan);
 }
@@ -48,7 +48,7 @@ t_plan		*cpy_plan(t_plan *plan)
 	new->normal = cpy_vector(plan->normal);
 	new->color = cpy_vector(plan->color);
 	new->shiny = plan->shiny;
-	new->calcul_a = 0;
+	new->var_a = 0;
 	new->prev_origin = NULL;
 	return (new);
 }

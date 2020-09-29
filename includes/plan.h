@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 05:20:57 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:54:23 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:24:31 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct	s_plan
 	t_vector	*normal;
 	float		shiny;
 	t_vector	*color;
-	float		calcul_a;
+	float		var_a;
 	t_vector	*prev_origin;
 }				t_plan;
 

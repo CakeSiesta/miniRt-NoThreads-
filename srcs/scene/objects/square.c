@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 05:10:02 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:49:52 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:29:24 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_vector *color)
 	new->ac = subtract_vectors(*new->c, *new->a);
 	new->normal = cross(*new->ab, *new->ac);
 	new->shiny = -1;
-	new->calcul_a = 0;
+	new->var_a = 0;
 	new->prev_origin = NULL;
 	return (new);
 }
@@ -87,7 +87,7 @@ t_square	*cpy_square(t_square *square)
 	new->color = cpy_vector(square->color);
 	new->size = square->size;
 	new->shiny = square->shiny;
-	new->calcul_a = 0;
+	new->var_a = 0;
 	new->prev_origin = NULL;
 	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 13:00:45 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:55:37 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:28:26 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ t_triangle *object)
 	dot_wv_wu[0] = product_vectors(*w, *object->u);
 	dot_wv_wu[1] = product_vectors(*w, *object->v);
 	r[0] = (object->dot_uv * dot_wv_wu[1] - object->dot_vv *
-dot_wv_wu[0]) / object->calcul_d;
+dot_wv_wu[0]) / object->var_d;
 	free(w);
 	if (r[0] < 0 || r[0] > 1)
 		return (0);
 	r[1] = (object->dot_uv * dot_wv_wu[0] - object->dot_uu *
-dot_wv_wu[1]) / object->calcul_d;
+dot_wv_wu[1]) / object->var_d;
 	if (r[1] < 0 || (r[0] + r[1] > 1))
 		return (0);
 	return (t);
@@ -52,11 +52,11 @@ t_triangle *object)
 		if (object->prev_origin)
 			free(object->prev_origin);
 		denom = -(product_vectors(*object->normal, *object->a));
-		object->calcul_a = product_vectors(origin, *object->normal) + denom;
+		object->var_a = product_vectors(origin, *object->normal) + denom;
 		object->prev_origin = cpy_vector(&origin);
 	}
 	b = product_vectors(direction, *object->normal);
-	t = -(object->calcul_a / b);
+	t = -(object->var_a / b);
 	if (t <= 0)
 		return (0);
 	return (intersect_triangle2(t, origin, direction, object));

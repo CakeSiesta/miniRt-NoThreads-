@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:57:24 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:40:16 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:25:43 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct	s_square
 	float		size;
 	t_vector	*color;
 	float		shiny;
-	float		calcul_a;
+	float		var_a;
 	t_vector	*prev_origin;
 }				t_square;
 

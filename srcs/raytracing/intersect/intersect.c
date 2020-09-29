@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 05:17:57 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:55:41 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:28:31 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ t_cylinder *object)
 		if (object->prev_origin)
 			free(object->prev_origin);
 		object->difference = subtract_vectors(origin, *object->center);
-		object->calcul_c = product_vectors(*object->difference,
+		object->var_c = product_vectors(*object->difference,
 *object->difference);
-		object->calcul_d = product_vectors(*object->orientation,
+		object->var_d = product_vectors(*object->orientation,
 *object->difference);
 		object->prev_origin = cpy_vector(&origin);
 	}

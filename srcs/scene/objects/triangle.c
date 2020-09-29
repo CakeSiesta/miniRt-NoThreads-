@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 05:32:43 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:49:56 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:29:31 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ t_vector *color)
 	triangle->dot_vv = product_vectors(*triangle->v, *triangle->v);
 	triangle->color = color;
 	triangle->shiny = -1;
-	triangle->calcul_a = 0;
-	triangle->calcul_d =
+	triangle->var_a = 0;
+	triangle->var_d =
 triangle->dot_uv * triangle->dot_uv - triangle->dot_uu * triangle->dot_vv;
 	triangle->prev_origin = NULL;
 	return (triangle);
@@ -69,8 +69,8 @@ t_triangle	*cpy_triangle(t_triangle *triangle)
 	new->dot_uv = triangle->dot_uv;
 	new->dot_vv = triangle->dot_vv;
 	new->shiny = triangle->shiny;
-	new->calcul_a = 0;
-	new->calcul_d = triangle->calcul_d;
+	new->var_a = 0;
+	new->var_d = triangle->var_d;
 	new->prev_origin = NULL;
 	return (new);
 }

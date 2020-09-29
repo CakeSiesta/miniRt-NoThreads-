@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 13:02:36 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:55:29 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:28:04 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ float		intersect_plan(t_vector origin, t_vector direction, t_plan *object)
 		if (object->prev_origin)
 			free(object->prev_origin);
 		denom = -(product_vectors(*object->normal, *object->point));
-		object->calcul_a = product_vectors(origin, *object->normal) + denom;
+		object->var_a = product_vectors(origin, *object->normal) + denom;
 		object->prev_origin = cpy_vector(&origin);
 	}
 	b = product_vectors(direction, *object->normal);
-	t = -(object->calcul_a / b);
+	t = -(object->var_a / b);
 	return ((t < 0) ? 0 : t);
 }

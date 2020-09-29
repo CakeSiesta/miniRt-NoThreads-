@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 13:00:17 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 18:28:43 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:27:57 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,19 +125,19 @@ t_cylinder *object)
 float		intersect_cylinder(t_vector origin, t_vector direction,
 t_cylinder *o)
 {
-	float calcul_b;
+	float var_b;
 	float d[6];
 	float delta;
 	float ret;
 
 	init_cylinder_intersect_cylinder(origin, o);
-	calcul_b = product_vectors(direction, *o->orientation);
-	d[0] = product_vectors(direction, direction) - (calcul_b *
-calcul_b * o->calcul_a);
+	var_b = product_vectors(direction, *o->orientation);
+	d[0] = product_vectors(direction, direction) - (var_b *
+var_b * o->var_a);
 	d[1] = 2.0 * (product_vectors(direction, *o->difference)) -
-(2 * calcul_b * o->calcul_d * o->calcul_a);
-	d[2] = o->calcul_c - ((o->diameter / 2.0) * (o->diameter / 2.0)) -
-((o->calcul_d * o->calcul_d) * o->calcul_a);
+(2 * var_b * o->var_d * o->var_a);
+	d[2] = o->var_c - ((o->diameter / 2.0) * (o->diameter / 2.0)) -
+((o->var_d * o->var_d) * o->var_a);
 	delta = (d[1] * d[1]) - (4.0 * d[0] * d[2]);
 	if (delta < 0)
 		return (0);

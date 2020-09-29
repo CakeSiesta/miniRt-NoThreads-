@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 04:05:15 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:54:26 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:26:00 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ typedef struct	s_triangle
 	t_vector	*normal;
 	t_vector	*color;
 	float		shiny;
-	float		calcul_a;
+	float		var_a;
 	float		dot_uu;
 	float		dot_uv;
 	float		dot_vv;
-	float		calcul_d;
+	float		var_d;
 	t_vector	*prev_origin;
 }				t_triangle;
 
