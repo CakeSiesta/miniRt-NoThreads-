@@ -21,11 +21,11 @@ float length_v, t_vector *vec_l)
 	float		intensity;
 
 	intensity = 0;
-	temp = multiply_vectors(2.0 * product_vectors(*l_vectors->normal,
+	temp = scale_vectors(2.0 * dot_vectors(*l_vectors->normal,
 *vec_l), *l_vectors->normal);
 	vec_r = subtract_vectors(*temp, *vec_l);
 	free(temp);
-	r_dot_v = product_vectors(*vec_r, *l_vectors->view);
+	r_dot_v = dot_vectors(*vec_r, *l_vectors->view);
 	if (r_dot_v > 0)
 		intensity += light->intensity * pow(r_dot_v / (length_vectors(*vec_r) *
 length_v), l_vectors->shiny);

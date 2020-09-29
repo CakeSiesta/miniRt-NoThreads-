@@ -40,7 +40,7 @@ t_light *light, t_scene *scene, t_lstobjects *objects)
 	t_scene_direction		*s_d;
 
 	object = objects->object;
-	direction = *multiply_vectors(-1, *l_vectors->view);
+	direction = *scale_vectors(-1, *l_vectors->view);
 	free(l_vectors->normal);
 	s_d = malloc(sizeof(t_scene_direction));
 	s_d->scene = scene;
@@ -67,12 +67,12 @@ t_light *light, t_scene *scene, t_lstobjects *objects)
 
 	i_n_dot_l[0] = 0;
 	vec_l = type_light(l_vectors, light, scene);
-	direction = *multiply_vectors(-1, *l_vectors->view);
+	direction = *scale_vectors(-1, *l_vectors->view);
 	closest_intersection(*l_vectors->point, *vec_l, scene, &shadow_obj);
 	if (!shadow_obj)
 	{
 		calculate_normal(l_vectors, light, scene, objects);
-		i_n_dot_l[1] = product_vectors(*l_vectors->normal, *vec_l);
+		i_n_dot_l[1] = dot_vectors(*l_vectors->normal, *vec_l);
 		if (i_n_dot_l[1] > 0)
 		{
 			i_n_dot_l[0] += ((light->intensity * i_n_dot_l[1]) /

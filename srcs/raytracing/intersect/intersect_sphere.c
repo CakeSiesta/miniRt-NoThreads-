@@ -26,12 +26,12 @@ t_vector direction, t_sphere *object)
 		if (object->prev_origin)
 			free(object->prev_origin);
 		object->difference = subtract_vectors(origin, *object->center);
-		object->var_c = product_vectors(*object->difference,
+		object->var_c = dot_vectors(*object->difference,
 *object->difference) - (object->radius * object->radius);
 		object->prev_origin = cpy_vector(&origin);
 	}
-	k[0] = product_vectors(direction, direction);
-	k[1] = 2 * product_vectors(*object->difference, direction);
+	k[0] = dot_vectors(direction, direction);
+	k[1] = 2 * dot_vectors(*object->difference, direction);
 	discriminant = k[1] * k[1] - 4 * k[0] * object->var_c;
 	if (discriminant < 0)
 		return (0);

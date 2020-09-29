@@ -21,12 +21,12 @@ t_triangle *object)
 	t_vector		*w;
 	float			r[2];
 
-	temp = multiply_vectors(t, direction);
+	temp = scale_vectors(t, direction);
 	point = add_vectors(origin, *temp);
 	free(temp);
 	w = subtract_vectors(*point, *object->a);
-	dot_wv_wu[0] = product_vectors(*w, *object->u);
-	dot_wv_wu[1] = product_vectors(*w, *object->v);
+	dot_wv_wu[0] = dot_vectors(*w, *object->u);
+	dot_wv_wu[1] = dot_vectors(*w, *object->v);
 	r[0] = (object->dot_uv * dot_wv_wu[1] - object->dot_vv *
 dot_wv_wu[0]) / object->var_d;
 	free(w);
@@ -51,11 +51,11 @@ t_triangle *object)
 	{
 		if (object->prev_origin)
 			free(object->prev_origin);
-		denom = -(product_vectors(*object->normal, *object->a));
-		object->var_a = product_vectors(origin, *object->normal) + denom;
+		denom = -(dot_vectors(*object->normal, *object->a));
+		object->var_a = dot_vectors(origin, *object->normal) + denom;
 		object->prev_origin = cpy_vector(&origin);
 	}
-	b = product_vectors(direction, *object->normal);
+	b = dot_vectors(direction, *object->normal);
 	t = -(object->var_a / b);
 	if (t <= 0)
 		return (0);

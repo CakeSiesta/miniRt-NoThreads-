@@ -23,12 +23,12 @@ t_vector direction, float closest_t, t_scene *scene)
 	final_color = 0;
 	if (!(l_vectors = malloc(sizeof(t_lightning_vectors))))
 		print_error_and_exit(-7);
-	temp = multiply_vectors(closest_t, direction);
+	temp = scale_vectors(closest_t, direction);
 	l_vectors->point = add_vectors(*(
 (t_camera *)scene->cameras->object)->origin, *(temp));
 	free(temp);
 	l_vectors->normal = new_vector(0, 0, 0);
-	l_vectors->view = multiply_vectors(-1, direction);
+	l_vectors->view = scale_vectors(-1, direction);
 	final_color = compute_lightning(l_vectors, scene->lights,
 scene, closest_object);
 	if (scene->depth > 0 && closest_object->reflective > 0)

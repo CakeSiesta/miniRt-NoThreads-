@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 07:02:22 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:54:28 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/09/29 10:56:01 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ typedef struct	s_lightning_vectors
 */
 float			length_vectors(t_vector v);
 float			distance_points(t_vector p1, t_vector p2);
-float			product_vectors(t_vector v1, t_vector v2);
+float			dot_vectors(t_vector v1, t_vector v2);
 t_vector		*cross(t_vector u, t_vector v);
 t_vector		*product_scalar(t_vector u, t_vector v);
 t_vector		*add_vectors(t_vector v1, t_vector v2);
-t_vector		*subtract_vectors(t_vector v1, t_vector v2);
-t_vector		*multiply_vectors_rotation(t_vector r, t_vector v2);
-t_vector		*multiply_vectors(float k, t_vector v2);
+t_vector		*substract_vectors(t_vector v1, t_vector v2);
+t_vector		*scale_vectors_rotation(t_vector r, t_vector v2);
+t_vector		*scale_vectors(float k, t_vector v2);
 
 /*
 ** Color

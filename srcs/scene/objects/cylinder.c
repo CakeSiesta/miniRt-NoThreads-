@@ -38,7 +38,7 @@ t_vector *color)
 	new->color = color;
 	new->shiny = -1;
 	new->difference = NULL;
-	new->var_a = 1.0 / product_vectors(*new->orientation, *new->orientation);
+	new->var_a = 1.0 / dot_vectors(*new->orientation, *new->orientation);
 	new->prev_origin = NULL;
 	return (new);
 }

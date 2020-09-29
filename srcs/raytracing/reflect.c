@@ -17,7 +17,7 @@ t_vector	*reflect_ray(t_vector v1, t_vector v2)
 	t_vector *v_temp;
 	t_vector *new;
 
-	v_temp = multiply_vectors(2 * product_vectors(v1, v2), v2);
+	v_temp = scale_vectors(2 * dot_vectors(v1, v2), v2);
 	new = subtract_vectors(*v_temp, v1);
 	free(v_temp);
 	return (new);
@@ -36,10 +36,10 @@ t_lightning_vectors *l_vectors, int color)
 	scene->depth--;
 	color = trace_ray(*temp, scene);
 	free(temp);
-	temp = multiply_vectors(1 - closest_object->reflective, *temp2);
+	temp = scale_vectors(1 - closest_object->reflective, *temp2);
 	free(temp2);
 	reflect_color = color_to_rgb(color);
-	temp2 = multiply_vectors(closest_object->reflective, *reflect_color);
+	temp2 = scale_vectors(closest_object->reflective, *reflect_color);
 	free(reflect_color);
 	reflect_color = add_vectors(*temp, *temp2);
 	free(temp);

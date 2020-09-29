@@ -14,7 +14,7 @@
 
 float			length_vectors(t_vector v)
 {
-	return (sqrt(product_vectors(v, v)));
+	return (sqrt(dot_vectors(v, v)));
 }
 
 float			distance_points(t_vector p1, t_vector p2)
@@ -23,7 +23,7 @@ float			distance_points(t_vector p1, t_vector p2)
 (p2.y - p1.y) + (p2.z - p1.z) * (p2.z - p1.z)));
 }
 
-float			product_vectors(t_vector v1, t_vector v2)
+float			dot_vectors(t_vector v1, t_vector v2)
 {
 	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }

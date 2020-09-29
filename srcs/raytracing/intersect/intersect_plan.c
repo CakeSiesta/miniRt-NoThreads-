@@ -23,11 +23,11 @@ float		intersect_plan(t_vector origin, t_vector direction, t_plan *object)
 	{
 		if (object->prev_origin)
 			free(object->prev_origin);
-		denom = -(product_vectors(*object->normal, *object->point));
-		object->var_a = product_vectors(origin, *object->normal) + denom;
+		denom = -(dot_vectors(*object->normal, *object->point));
+		object->var_a = dot_vectors(origin, *object->normal) + denom;
 		object->prev_origin = cpy_vector(&origin);
 	}
-	b = product_vectors(direction, *object->normal);
+	b = dot_vectors(direction, *object->normal);
 	t = -(object->var_a / b);
 	return ((t < 0) ? 0 : t);
 }

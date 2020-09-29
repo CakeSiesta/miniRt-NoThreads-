@@ -19,7 +19,7 @@ void *object)
 
 	temp = subtract_vectors(*l_vectors->point,
 		*(((t_sphere *)object)->center));
-	l_vectors->normal = multiply_vectors(1 / length_vectors(*temp), *temp);
+	l_vectors->normal = scale_vectors(1 / length_vectors(*temp), *temp);
 	free(temp);
 }
 
@@ -31,18 +31,18 @@ void *object, t_light *light)
 	float		denom;
 	float		t;
 
-	temp[1] = multiply_vectors(-1, *((t_plan *)object)->normal);
-	denom = -(product_vectors(*((t_plan *)object)->normal, *(
+	temp[1] = scale_vectors(-1, *((t_plan *)object)->normal);
+	denom = -(dot_vectors(*((t_plan *)object)->normal, *(
 (t_plan *)object)->point));
-	k[0] = product_vectors(*light->vector, *((t_plan *)object)->normal) + denom;
-	k[1] = product_vectors(*temp[1], *((t_plan *)object)->normal);
+	k[0] = dot_vectors(*light->vector, *((t_plan *)object)->normal) + denom;
+	k[1] = dot_vectors(*temp[1], *((t_plan *)object)->normal);
 	t = -(k[0] / k[1]);
-	temp[2] = multiply_vectors(t, *temp[1]);
+	temp[2] = scale_vectors(t, *temp[1]);
 	free(temp[1]);
 	temp[0] = add_vectors(*light->vector, *temp[2]);
 	free(temp[2]);
 	temp[2] = subtract_vectors(*light->vector, *temp[0]);
-	l_vectors->normal = multiply_vectors(1 / length_vectors(*temp[2]),
+	l_vectors->normal = scale_vectors(1 / length_vectors(*temp[2]),
 *temp[2]);
 	free(temp[2]);
 	free(temp[0]);
@@ -60,20 +60,20 @@ t_light *light)
 	v[2] = subtract_vectors(*((t_triangle *)object)->c,
 *((t_triangle *)object)->a);
 	v[0] = cross(*v[1], *v[2]);
-	v[3] = multiply_vectors(-1, *v[0]);
-	k[0] = product_vectors(*light->vector, *v[0]) - (product_vectors(*v[0],
+	v[3] = scale_vectors(-1, *v[0]);
+	k[0] = dot_vectors(*light->vector, *v[0]) - (dot_vectors(*v[0],
 *((t_triangle *)object)->a));
-	k[1] = product_vectors(*v[3], *v[0]);
+	k[1] = dot_vectors(*v[3], *v[0]);
 	free(v[0]);
 	free(v[1]);
 	free(v[2]);
 	t = -(k[0] / k[1]);
-	v[5] = multiply_vectors(t, *v[3]);
+	v[5] = scale_vectors(t, *v[3]);
 	free(v[3]);
 	v[4] = add_vectors(*light->vector, *v[5]);
 	free(v[5]);
 	v[5] = subtract_vectors(*light->vector, *v[4]);
-	l_vectors->normal = multiply_vectors(1 / length_vectors(*v[5]), *v[5]);
+	l_vectors->normal = scale_vectors(1 / length_vectors(*v[5]), *v[5]);
 	free(v[5]);
 	free(v[4]);
 }
@@ -87,17 +87,17 @@ t_light *light)
 	t_vector	*temp;
 	float		t;
 
-	temp2 = multiply_vectors(-1, *((t_square *)object)->orientation);
-	k[0] = product_vectors(*light->vector, *((t_square *)object)->orientation) -
-(product_vectors(*(
+	temp2 = scale_vectors(-1, *((t_square *)object)->orientation);
+	k[0] = dot_vectors(*light->vector, *((t_square *)object)->orientation) -
+(dot_vectors(*(
 (t_square *)object)->orientation, *((t_square *)object)->center));
-	k[1] = product_vectors(*temp2, *((t_square *)object)->orientation);
+	k[1] = dot_vectors(*temp2, *((t_square *)object)->orientation);
 	t = -(k[0] / k[1]);
-	temp = multiply_vectors(t, *temp2);
+	temp = scale_vectors(t, *temp2);
 	point = add_vectors(*light->vector, *temp);
 	free(temp);
 	temp = subtract_vectors(*light->vector, *point);
-	l_vectors->normal = multiply_vectors(1 / length_vectors(*temp), *temp);
+	l_vectors->normal = scale_vectors(1 / length_vectors(*temp), *temp);
 	free(temp);
 	free(point);
 }

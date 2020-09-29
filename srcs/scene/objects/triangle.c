@@ -26,9 +26,9 @@ t_vector *color)
 	triangle->u = subtract_vectors(*triangle->b, *triangle->a);
 	triangle->v = subtract_vectors(*triangle->c, *triangle->a);
 	triangle->normal = cross(*triangle->u, *triangle->v);
-	triangle->dot_uu = product_vectors(*triangle->u, *triangle->u);
-	triangle->dot_uv = product_vectors(*triangle->u, *triangle->v);
-	triangle->dot_vv = product_vectors(*triangle->v, *triangle->v);
+	triangle->dot_uu = dot_vectors(*triangle->u, *triangle->u);
+	triangle->dot_uv = dot_vectors(*triangle->u, *triangle->v);
+	triangle->dot_vv = dot_vectors(*triangle->v, *triangle->v);
 	triangle->color = color;
 	triangle->shiny = -1;
 	triangle->var_a = 0;

@@ -20,18 +20,18 @@ void	check(t_lightning_vectors *l_vectors, void *object, t_light *light)
 	t_vector		*temp[2];
 	t_vector		*point;
 
-	temp[0] = multiply_vectors(-1, *((t_plan *)object)->normal);
-	denom = -(product_vectors(*((t_plan *)object)->normal, *(
+	temp[0] = scale_vectors(-1, *((t_plan *)object)->normal);
+	denom = -(dot_vectors(*((t_plan *)object)->normal, *(
 (t_plan *)object)->point));
-	k[0] = product_vectors(*light->vector, *((t_plan *)object)->normal) + denom;
-	k[1] = product_vectors(*temp[0], *((t_plan *)object)->normal);
+	k[0] = dot_vectors(*light->vector, *((t_plan *)object)->normal) + denom;
+	k[1] = dot_vectors(*temp[0], *((t_plan *)object)->normal);
 	t = -(k[0] / k[1]);
-	temp[1] = multiply_vectors(t, *temp[0]);
+	temp[1] = scale_vectors(t, *temp[0]);
 	free(temp[0]);
 	point = add_vectors(*light->vector, *temp[1]);
 	free(temp[1]);
 	temp[1] = subtract_vectors(*light->vector, *point);
-	l_vectors->normal = multiply_vectors(1 /
+	l_vectors->normal = scale_vectors(1 /
 length_vectors(*temp[1]), *temp[1]);
 	free(temp[1]);
 	free(point);
@@ -48,14 +48,14 @@ t_scene_direction *s_d, t_light *light)
 
 	scene = s_d->scene;
 	direction = *(s_d->direction);
-	k[0] = product_vectors(*((t_camera *)scene->cameras->object)->origin,
-*((t_cylinder *)object)->orientation) - (product_vectors(*(
+	k[0] = dot_vectors(*((t_camera *)scene->cameras->object)->origin,
+*((t_cylinder *)object)->orientation) - (dot_vectors(*(
 (t_cylinder *)object)->orientation, *((t_cylinder *)object)->point1));
-	k[1] = product_vectors(direction, *((t_cylinder *)object)->orientation);
+	k[1] = dot_vectors(direction, *((t_cylinder *)object)->orientation);
 	k[2] = -(k[0] / k[1]);
 	if (k[2] > 0)
 	{
-		temp = multiply_vectors(k[2], direction);
+		temp = scale_vectors(k[2], direction);
 		point = add_vectors(*((t_camera *)scene->cameras->object)->origin
 , *temp);
 		free(temp);
@@ -77,15 +77,15 @@ t_scene_direction *s_d, t_light *light)
 
 	scene = s_d->scene;
 	direction = *(s_d->direction);
-	denom = -(product_vectors(*((t_cylinder *)object)->orientation, *(
+	denom = -(dot_vectors(*((t_cylinder *)object)->orientation, *(
 (t_cylinder *)object)->point2));
-	k[0] = product_vectors(*((t_camera *)scene->cameras->object)->origin, *(
+	k[0] = dot_vectors(*((t_camera *)scene->cameras->object)->origin, *(
 (t_cylinder *)object)->orientation) + denom;
-	k[1] = product_vectors(direction, *((t_cylinder *)object)->orientation);
+	k[1] = dot_vectors(direction, *((t_cylinder *)object)->orientation);
 	k[2] = -(k[0] / k[1]);
 	if (k[2] > 0)
 	{
-		temp[0] = multiply_vectors(k[2], direction);
+		temp[0] = scale_vectors(k[2], direction);
 		temp[1] = add_vectors(*((t_camera *)scene->cameras->object)->origin
 , *temp[0]);
 		free(temp[0]);
@@ -109,13 +109,13 @@ void *object, t_scene_direction *s_d, t_light *light)
 	temp2 = NULL;
 	temp = subtract_vectors(*l_vectors->point, *(
 ((t_cylinder *)object)->center));
-	l_vectors->normal = multiply_vectors(1 / length_vectors(*temp), *temp);
+	l_vectors->normal = scale_vectors(1 / length_vectors(*temp), *temp);
 	free(temp);
-	if (product_vectors(*((t_cylinder *)object)->orientation, direction) < 0)
+	if (dot_vectors(*((t_cylinder *)object)->orientation, direction) < 0)
 	{
 		check_face(l_vectors, object, s_d, light);
 	}
-	else if (product_vectors(*((t_cylinder *)object)->orientation,
+	else if (dot_vectors(*((t_cylinder *)object)->orientation,
 direction) > 0)
 	{
 		check_ext(l_vectors, object, s_d, light);

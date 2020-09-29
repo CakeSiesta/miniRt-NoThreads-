@@ -21,14 +21,14 @@ t_square *object)
 	float		alpha;
 	float		beta;
 
-	temp = multiply_vectors(t, direction);
+	temp = scale_vectors(t, direction);
 	point = add_vectors(origin, *temp);
 	free(temp);
 	ap = subtract_vectors(*point, *object->a);
-	alpha = product_vectors(*ap, *object->ab) /
-product_vectors(*object->ab, *object->ab);
-	beta = product_vectors(*ap, *object->ac) /
-product_vectors(*object->ac, *object->ac);
+	alpha = dot_vectors(*ap, *object->ab) /
+dot_vectors(*object->ab, *object->ab);
+	beta = dot_vectors(*ap, *object->ac) /
+dot_vectors(*object->ac, *object->ac);
 	free(ap);
 	free(point);
 	if (alpha >= 0 && alpha <= 1 && beta >= 0 && beta <= 1)
@@ -48,11 +48,11 @@ t_square *object)
 	{
 		if (object->prev_origin)
 			free(object->prev_origin);
-		denom = -(product_vectors(*object->normal, *object->center));
-		object->var_a = product_vectors(origin, *object->normal) + denom;
+		denom = -(dot_vectors(*object->normal, *object->center));
+		object->var_a = dot_vectors(origin, *object->normal) + denom;
 		object->prev_origin = cpy_vector(&origin);
 	}
-	alpha = product_vectors(direction, *object->normal);
+	alpha = dot_vectors(direction, *object->normal);
 	beta = -(object->var_a / alpha);
 	if (beta <= 0)
 		return (0);
