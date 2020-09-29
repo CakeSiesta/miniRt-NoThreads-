@@ -24,7 +24,7 @@ t_triangle *object)
 	temp = scale_vectors(t, direction);
 	point = add_vectors(origin, *temp);
 	free(temp);
-	w = subtract_vectors(*point, *object->a);
+	w = substract_vectors(*point, *object->a);
 	dot_wv_wu[0] = dot_vectors(*w, *object->u);
 	dot_wv_wu[1] = dot_vectors(*w, *object->v);
 	r[0] = (object->dot_uv * dot_wv_wu[1] - object->dot_vv *

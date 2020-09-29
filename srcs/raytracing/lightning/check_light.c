@@ -17,7 +17,7 @@ void *object)
 {
 	t_vector		*temp;
 
-	temp = subtract_vectors(*l_vectors->point,
+	temp = substract_vectors(*l_vectors->point,
 		*(((t_sphere *)object)->center));
 	l_vectors->normal = scale_vectors(1 / length_vectors(*temp), *temp);
 	free(temp);
@@ -41,7 +41,7 @@ void *object, t_light *light)
 	free(temp[1]);
 	temp[0] = add_vectors(*light->vector, *temp[2]);
 	free(temp[2]);
-	temp[2] = subtract_vectors(*light->vector, *temp[0]);
+	temp[2] = substract_vectors(*light->vector, *temp[0]);
 	l_vectors->normal = scale_vectors(1 / length_vectors(*temp[2]),
 *temp[2]);
 	free(temp[2]);
@@ -55,9 +55,9 @@ t_light *light)
 	float		k[4];
 	float		t;
 
-	v[1] = subtract_vectors(*((t_triangle *)object)->b,
+	v[1] = substract_vectors(*((t_triangle *)object)->b,
 *((t_triangle *)object)->a);
-	v[2] = subtract_vectors(*((t_triangle *)object)->c,
+	v[2] = substract_vectors(*((t_triangle *)object)->c,
 *((t_triangle *)object)->a);
 	v[0] = cross(*v[1], *v[2]);
 	v[3] = scale_vectors(-1, *v[0]);
@@ -72,7 +72,7 @@ t_light *light)
 	free(v[3]);
 	v[4] = add_vectors(*light->vector, *v[5]);
 	free(v[5]);
-	v[5] = subtract_vectors(*light->vector, *v[4]);
+	v[5] = substract_vectors(*light->vector, *v[4]);
 	l_vectors->normal = scale_vectors(1 / length_vectors(*v[5]), *v[5]);
 	free(v[5]);
 	free(v[4]);
@@ -96,7 +96,7 @@ t_light *light)
 	temp = scale_vectors(t, *temp2);
 	point = add_vectors(*light->vector, *temp);
 	free(temp);
-	temp = subtract_vectors(*light->vector, *point);
+	temp = substract_vectors(*light->vector, *point);
 	l_vectors->normal = scale_vectors(1 / length_vectors(*temp), *temp);
 	free(temp);
 	free(point);

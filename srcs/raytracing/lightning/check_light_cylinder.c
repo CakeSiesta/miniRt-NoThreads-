@@ -30,7 +30,7 @@ void	check(t_lightning_vectors *l_vectors, void *object, t_light *light)
 	free(temp[0]);
 	point = add_vectors(*light->vector, *temp[1]);
 	free(temp[1]);
-	temp[1] = subtract_vectors(*light->vector, *point);
+	temp[1] = substract_vectors(*light->vector, *point);
 	l_vectors->normal = scale_vectors(1 /
 length_vectors(*temp[1]), *temp[1]);
 	free(temp[1]);
@@ -107,7 +107,7 @@ void *object, t_scene_direction *s_d, t_light *light)
 	scene = s_d->scene;
 	direction = *(s_d->direction);
 	temp2 = NULL;
-	temp = subtract_vectors(*l_vectors->point, *(
+	temp = substract_vectors(*l_vectors->point, *(
 ((t_cylinder *)object)->center));
 	l_vectors->normal = scale_vectors(1 / length_vectors(*temp), *temp);
 	free(temp);

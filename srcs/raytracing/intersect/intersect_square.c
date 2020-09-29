@@ -24,7 +24,7 @@ t_square *object)
 	temp = scale_vectors(t, direction);
 	point = add_vectors(origin, *temp);
 	free(temp);
-	ap = subtract_vectors(*point, *object->a);
+	ap = substract_vectors(*point, *object->a);
 	alpha = dot_vectors(*ap, *object->ab) /
 dot_vectors(*object->ab, *object->ab);
 	beta = dot_vectors(*ap, *object->ac) /

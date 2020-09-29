@@ -23,8 +23,8 @@ t_vector *color)
 	triangle->a = a;
 	triangle->b = b;
 	triangle->c = c;
-	triangle->u = subtract_vectors(*triangle->b, *triangle->a);
-	triangle->v = subtract_vectors(*triangle->c, *triangle->a);
+	triangle->u = substract_vectors(*triangle->b, *triangle->a);
+	triangle->v = substract_vectors(*triangle->c, *triangle->a);
 	triangle->normal = cross(*triangle->u, *triangle->v);
 	triangle->dot_uu = dot_vectors(*triangle->u, *triangle->u);
 	triangle->dot_uv = dot_vectors(*triangle->u, *triangle->v);

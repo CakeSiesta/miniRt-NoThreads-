@@ -40,7 +40,7 @@ t_cylinder *object)
 			free(object->difference);
 		if (object->prev_origin)
 			free(object->prev_origin);
-		object->difference = subtract_vectors(origin, *object->center);
+		object->difference = substract_vectors(origin, *object->center);
 		object->var_c = dot_vectors(*object->difference,
 *object->difference);
 		object->var_d = dot_vectors(*object->orientation,

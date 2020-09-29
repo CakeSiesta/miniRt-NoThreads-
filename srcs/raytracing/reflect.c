@@ -18,7 +18,7 @@ t_vector	*reflect_ray(t_vector v1, t_vector v2)
 	t_vector *new;
 
 	v_temp = scale_vectors(2 * dot_vectors(v1, v2), v2);
-	new = subtract_vectors(*v_temp, v1);
+	new = substract_vectors(*v_temp, v1);
 	free(v_temp);
 	return (new);
 }

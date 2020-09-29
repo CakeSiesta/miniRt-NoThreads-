@@ -43,8 +43,8 @@ t_vector *color)
 	new->size = size;
 	new->color = color;
 	place_points(&new);
-	new->ab = subtract_vectors(*new->b, *new->a);
-	new->ac = subtract_vectors(*new->c, *new->a);
+	new->ab = substract_vectors(*new->b, *new->a);
+	new->ac = substract_vectors(*new->c, *new->a);
 	new->normal = cross(*new->ab, *new->ac);
 	new->shiny = -1;
 	new->var_a = 0;

@@ -20,7 +20,7 @@ t_light *light, t_scene *scene)
 	vec_l = NULL;
 	if (light->type == TYPE_POINT)
 	{
-		vec_l = subtract_vectors(*light->vector, *l_vectors->point);
+		vec_l = substract_vectors(*light->vector, *l_vectors->point);
 		scene->t_max = 1;
 	}
 	else if (light->type == TYPE_DIRECTIONAL)

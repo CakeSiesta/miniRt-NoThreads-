@@ -25,7 +25,7 @@ t_vector direction, t_sphere *object)
 			free(object->difference);
 		if (object->prev_origin)
 			free(object->prev_origin);
-		object->difference = subtract_vectors(origin, *object->center);
+		object->difference = substract_vectors(origin, *object->center);
 		object->var_c = dot_vectors(*object->difference,
 *object->difference) - (object->radius * object->radius);
 		object->prev_origin = cpy_vector(&origin);
