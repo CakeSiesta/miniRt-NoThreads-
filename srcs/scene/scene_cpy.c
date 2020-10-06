@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 00:59:45 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:50:14 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/10/06 12:14:30 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ t_scene		*cpy_scene(t_scene *scene)
 	new->t_min = scene->t_min;
 	new->t_max = scene->t_max;
 	new->depth = scene->depth;
+	new->nb_camera = scene->nb_camera;
 	return (new);
 }
 
