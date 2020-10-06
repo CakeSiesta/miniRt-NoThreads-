@@ -6,7 +6,7 @@
 #    By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/27 02:42:41 by lmartin           #+#    #+#              #
-#    Updated: 2020/09/21 17:15:54 by jherrald         ###   ########.fr        #
+#    Updated: 2020/10/06 13:25:06 by mkravetz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,6 @@ DIR_HEADERS =	./includes/
 DIR_SRCS =		./srcs/
 
 DIR_OBJS =		./
-
-SAVE =			-fsanitize=address
 
 SRC =			maths/rotation.c \
 				maths/vector_calculation.c \
@@ -90,7 +88,7 @@ $(NAME) :		$(OBJS)
 
 %.o: %.c
 				@gcc $(FLAGS) -I $(DIR_HEADERS) -c $< -o $@
-				@echo "Compiled "$<" successfully!"
+				@echo "\x1b[32;01m\033[1mCompiled "$<" successfully!"
 
 bonus:
 
