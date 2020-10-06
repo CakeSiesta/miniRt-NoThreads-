@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 23:59:42 by lmartin           #+#    #+#             */
-/*   Updated: 2020/10/06 15:30:06 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/10/06 17:07:22 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,8 @@ int		parsing_triangle(t_scene **scene, char *l)
 vec[0], vec[1], vec[2], color), -1)) ? 0 : -1));
 }
 
-/* cy	50.0,0.0,20.6	0.0,0.0,1.0	14.2	21.42	10,0,255
+/*i[1] =0				1			2		3		4
+** cy	50.0,0.0,20.6	0.0,0.0,1.0	14.2	21.42	10,0,255
 **	    center			3d orient	diam	h		color
 */
 int		parsing_cylinder(t_scene **scene, char *l)
@@ -153,10 +154,10 @@ int		parsing_cylinder(t_scene **scene, char *l)
 		if ((i[1] < 2) && (((l[i[0]] < '0' || l[i[0]] > '9') && l[i[0]] != '-')
 		|| (i[2] = ft_atov(&l[i[0]], &vec[i[1]])) < 0))
 			return (multiple_free_return(vec, i[1] - 1));
-		if (((i[1] == 2) && ((l[i[0]] < '0' || l[i[0]] > '9') ||
+		if (((i[1] == 4) && ((l[i[0]] < '0' || l[i[0]] > '9') ||
 		(i[2] = ft_atoc(&l[i[0]], &color)) < 0)) ||
-		((i[1] > 2 && i[1] < 5) && ((l[i[0]] < '0' || l[i[0]] > '9') ||
-		(i[2] = ft_atof(&l[i[0]], &j[i[1] - 3])) < 0)))
+		((i[1] > 1 && i[1] < 4) && ((l[i[0]] < '0' || l[i[0]] > '9') ||
+		(i[2] = ft_atof(&l[i[0]], &j[i[1] - 2])) < 0)))
 			return (multiple_free_return(vec, 2));
 	}
 	if (l[i[0]] && l[i[0]] != ' ' && l[i[0]] != '\t')
