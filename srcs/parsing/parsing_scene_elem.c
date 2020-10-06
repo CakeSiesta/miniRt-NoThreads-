@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 00:03:38 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:55:50 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/10/06 15:01:47 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int		parsing_resolution(t_scene **scene, char *line)
 	return (!((*scene)->viewport = new_canvas(res_x, res_y, 1)) ? -1 : 0);
 }
 
+// A	0.5		255,255,255
+// 		intens		color
 int		parsing_ambient_light(t_scene **scene, char *l)
 {
 	int			i[2];
@@ -103,7 +105,8 @@ int		parsing_directional_light(t_scene **scene, char *line)
 	(void)line;
 	return (0);
 }
-
+// c 	0.0,0.0,0.0		0,0,1		70
+// 			coord		orient		fov	
 int		parsing_camera(t_scene **scene, char *l)
 {
 	int			i;

@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 23:59:42 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 17:24:23 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/10/06 15:30:06 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int		parsing_sphere(t_scene **scene, char *l)
 radius, color, 10, center), 0.5)) ? 0 : -1));
 }
 
+/* pl  0.0,0.0,0.0  0.0,0.0,1.0  0,0,255
+**      pos point    3d orient    color
+*/
 int		parsing_plan(t_scene **scene, char *line)
 {
 	int			i;
@@ -69,6 +72,9 @@ int		parsing_plan(t_scene **scene, char *line)
 vectors[0], vectors[1], color), 0.5)) ? 0 : -1));
 }
 
+/* sq  0.0,0.0,20.6   1.0,0.0,0.0   12.6   255,0,255
+**	      center	   3d orient     h	    color
+*/
 int		parsing_square(t_scene **scene, char *l)
 {
 	int			i[3];
@@ -98,6 +104,9 @@ int		parsing_square(t_scene **scene, char *l)
 vectors[0], vectors[1], size, color), -1)) ? 0 : -1));
 }
 
+/* tr  10.0,20.0,10.0   10.0,10.0,20.0   20.0,10.0,10.0   0,255,255
+**	    pos point1	     pos point2	      pos point3	    color
+*/
 int		parsing_triangle(t_scene **scene, char *l)
 {
 	int			i[3];
@@ -124,6 +133,9 @@ int		parsing_triangle(t_scene **scene, char *l)
 vec[0], vec[1], vec[2], color), -1)) ? 0 : -1));
 }
 
+/* cy	50.0,0.0,20.6	0.0,0.0,1.0	14.2	21.42	10,0,255
+**	    center			3d orient	diam	h		color
+*/
 int		parsing_cylinder(t_scene **scene, char *l)
 {
 	int			i[3];
