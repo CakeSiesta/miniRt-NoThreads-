@@ -18,7 +18,6 @@ RM =			rm -rf
 
 MLX_FLAGS =		-I minilibx -lmlx -framework OpenGL -framework AppKit
 
-SAVE =			-fsanitize=address
 
 DIR_HEADERS =	./includes/
 

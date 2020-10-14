@@ -17,14 +17,14 @@
 
 typedef	struct	s_mlx
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*mlx_img;
-	char	*data;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	void		*mlx_img;
+	char		*data;
 	int		bpp;
 	int		size_line;
 	int		endian;
-	t_scene *scene;
-}				t_mlx;
+	t_scene 	*scene;
+}		t_mlx;
 
 #endif

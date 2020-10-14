@@ -72,14 +72,26 @@ t_args	*new_s_args(t_mlx *my_mlx, int i, pthread_mutex_t *lock)
 {
 	t_args			*args;
 
+	fprintf(stderr, "before malloc in new_s_args\n");
 	if (!(args = malloc(sizeof(t_args))))
 		print_error_and_exit(-7);
+	fprintf(stderr, "NEW_S_ARGS -- [%d]\n", i);
 	args->data = my_mlx->data;
+	fprintf(stderr, "after data\n");
 	args->scene = cpy_scene(my_mlx->scene);
+	fprintf(stderr, "after cpy_scene\n");
+	fprintf(stderr, "my_mlx thingy is [[%f]]\n", my_mlx->scene->viewport->width);
+	fprintf(stderr, "i is wurth [%d]\n", i);
+	fprintf(stderr, "my_mlx calcul is [[%f]]\n", (my_mlx->scene->viewport->width / 2) + 1 + i);
+	args->x = 0;
 	args->x = -(my_mlx->scene->viewport->width / 2) + 1 + i;
+	fprintf(stderr, "after agrs->x\n");
 	args->bpp = my_mlx->bpp;
+	fprintf(stderr, "after agrs->bpp\n");
 	args->size_line = my_mlx->size_line;
+	fprintf(stderr, "after size_line \n");
 	args->lock = lock;
+	fprintf(stderr, "after lock\n");
 	return (args);
 }
 
@@ -87,29 +99,42 @@ t_args	*new_s_args(t_mlx *my_mlx, int i, pthread_mutex_t *lock)
 ** Create a new image charging each column by a thread
 */
 
+
 void	create_image(t_mlx *my_mlx)
 {
-	int				i;
+	int			i;
 	t_args			*args;
 	pthread_t		*threads;
-	pthread_mutex_t lock;
+	pthread_mutex_t 	lock;
 
 	if (!(threads = malloc(sizeof(pthread_t) * my_mlx->scene->viewport->width)))
 		print_error_and_exit(-7);
+	fprintf(stderr, "CREATE IMG 0\n");
 	if (pthread_mutex_init(&lock, NULL) != 0)
 		pthread_error(-9);
+	fprintf(stderr, "CREATE IMG 1\n");
 	i = -1;
 	while (++i < my_mlx->scene->viewport->width)
 	{
+		fprintf(stderr, "before new_s_args\n");
 		args = new_s_args(my_mlx, i, &lock);
+		fprintf(stderr, "CREATE IMG 1,5, [ i isss %d]\n", i);
 		if (pthread_create(&threads[i], NULL, &thread_function, args))
 			pthread_error(-10);
 	}
-	while (i--)
+	fprintf(stderr, "CREATE IMG 2\n");
+	while (i--) // goes from 400 to 0
+	{
+		fprintf(stderr, "i in pthread join [%d]\n", i);
+		//fprintf(stderr, "threads worth %d\n", threads[i]);
 		if (pthread_join(threads[i], NULL))
 			pthread_error(-11);
+	}
+	fprintf(stderr, "CREATE IMG 3\n");
 	pthread_mutex_destroy(&lock);
+	fprintf(stderr, "CREATE IMG 4\n");
 	i = my_mlx->scene->viewport->width;
+	fprintf(stderr, "CREATE IMG 5\n\n\n");
 	while (--i)
 		wait(NULL);
 }

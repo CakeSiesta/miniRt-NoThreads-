@@ -17,10 +17,10 @@ typedef struct		s_args
 {
 	char			*data;
 	t_scene			*scene;
-	int				x;
-	int				bpp;
-	int				size_line;
-	pthread_mutex_t *lock;
+	int			x;
+	int			bpp;
+	int			size_line;
+	pthread_mutex_t 	*lock;
 }					t_args;
 
 void				put_pixel(t_args *args, int y, int color);

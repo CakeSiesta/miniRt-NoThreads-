@@ -65,9 +65,9 @@ scene->t_max == -1) && (t_temp < closest_t || closest_t == -1))
 
 int			trace_ray(t_vector direction, t_scene *scene)
 {
-	float					closest_t;
+	float				closest_t;
 	t_lstobjects			*closest_object;
-	int						color;
+	int				color;
 
 	closest_t = closest_intersection(*(((t_camera *)scene->cameras->object)
 ->origin), direction, scene, &closest_object);
