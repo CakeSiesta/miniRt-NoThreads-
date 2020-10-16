@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/24 01:41:32 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:50:23 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/10/16 17:26:40 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	print_error_and_exit(int nb_err)
 	if (nb_err == -1)
 		write(STDERR_FILENO, "Error: No such file or directory\n", 33);
 	if (nb_err == -2)
-		write(STDERR_FILENO, "Error: Extension needed\n", 24);
+		write(STDERR_FILENO, "Error: Don't forget the .rt\n", 28);
 	if (nb_err == -3)
-		write(STDERR_FILENO, "Error: Invalid extension\n", 25);
+		write(STDERR_FILENO, "Error: Incorrect spelling of .rt\n", 33);
 	if (nb_err == -4)
 		write(STDERR_FILENO, "Error: Invalid scene description\n", 33);
 	if (nb_err == -5)

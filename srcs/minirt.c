@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/27 02:43:38 by lmartin           #+#    #+#             */
-/*   Updated: 2020/10/06 18:02:01 by jherrald         ###   ########.fr       */
+/*   Created: 2020/10/16 16:14:33 by jherrald          #+#    #+#             */
+/*   Updated: 2020/10/16 16:46:22 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,13 @@ int		main(int argc, char *argv[])
 
 	if (argc < 2 || argc > 3)
 		print_error_and_exit(-9);
-	printf("GET THERE 0\n");
 	i = open_and_check_error(argv[1], &fd); //parsing.c ->reads argv[1], stocks in fd
-	printf("GET THERE 1\n");
-	if (!(scene = parsing(fd))) // gnl of fd + feeds parsing
+	// i = lenght of .rt file
+	if (!(scene = parsing(fd))) // gnl of fd + feeds parsing. Scene now comprises all of .rt
 		print_error_and_exit(-4);
-	printf("GET THERE 2\n");
 	close(fd);
-	printf("GET THERE 3\n");
 	my_mlx = init_my_mlx(scene);
-	printf("GET THERE 4\n");
 	create_image(my_mlx);
-	printf("GET THERE 5\n");
 	if (argc == 2)
 		start_window(my_mlx);
 	else if (argc == 3 && !(ft_strcmp(argv[2], "-save")))

@@ -6,7 +6,7 @@
 #    By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/27 02:42:41 by lmartin           #+#    #+#              #
-#    Updated: 2020/10/06 13:25:06 by mkravetz         ###   ########.fr        #
+#    Updated: 2020/10/16 14:58:21 by jherrald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ RM =			rm -rf
 
 MLX_FLAGS =		-I minilibx -lmlx -framework OpenGL -framework AppKit
 
+SAVE =			-fsanitize=address
 
 DIR_HEADERS =	./includes/
 

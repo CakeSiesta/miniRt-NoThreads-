@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/15 21:05:57 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:55:47 by lmartin          ###   ########.fr       */
+/*   Created: 2020/10/16 15:39:07 by jherrald          #+#    #+#             */
+/*   Updated: 2020/10/16 17:26:37 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		setup_cameras(t_scene **scene)
 			nb_cam++;
 			cameras = cameras->next;
 		}
-		cameras->next = (*scene)->cameras;
+		cameras->next = (*scene)->cameras; // former la boucle de cameras
 		(*scene)->cameras->prev = cameras;
 	}
 	(*scene)->nb_camera = nb_cam;
@@ -93,13 +93,16 @@ t_scene		*parsing(int fd)
 			return (NULL);
 		free(line);
 	}
-	if (ret < 0 || (ret = choice_parsing(&scene, line)) < 0)
+	if (ret < 0) // removed [|| choice_parsing(&scene, line)] condition
 		return (NULL);
-	setup_cameras(&scene);
+	setup_cameras(&scene); // setup boucle de cameras
 	setup_viewplane(&scene);
 	return (scene);
 }
 
+/*
+** Returns i (= lenght of .rt file) or ERROR msg if .rt incorrect
+*/
 int			open_and_check_error(char *filename, int *fd)
 {
 	int		i;
@@ -111,7 +114,7 @@ int			open_and_check_error(char *filename, int *fd)
 		i++;
 	if (!filename[i])
 		print_error_and_exit(-2);
-	if (i < 3 || ft_strcmp(&filename[i], ".rt"))
+	if (i < 1 || ft_strcmp(&filename[i], ".rt"))
 		print_error_and_exit(-3);
 	return (i);
 }
