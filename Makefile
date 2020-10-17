@@ -6,7 +6,7 @@
 #    By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/27 02:42:41 by lmartin           #+#    #+#              #
-#    Updated: 2020/10/16 14:58:21 by jherrald         ###   ########.fr        #
+#    Updated: 2020/10/17 17:34:57 by mkravetz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,6 @@ FLAGS =			-Wall -Wextra -Werror
 RM =			rm -rf
 
 MLX_FLAGS =		-I minilibx -lmlx -framework OpenGL -framework AppKit
-
-SAVE =			-fsanitize=address
 
 DIR_HEADERS =	./includes/
 
@@ -75,7 +73,7 @@ SRC =			maths/rotation.c \
 
 SRCS =			$(addprefix $(DIR_SRCS), $(SRC))
 
-COMPIL =		$(FLAGS) $(SAVE)
+COMPIL =		$(FLAGS)
 
 OBJS =			$(SRCS:.c=.o)
 
@@ -84,7 +82,7 @@ NAME =			miniRT
 all:			$(NAME)
 
 $(NAME) :		$(OBJS)
-				$(CC) $(FLAGS) $(SAVE) -I $(DIR_HEADERS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
+				$(CC) $(FLAGS) -I $(DIR_HEADERS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
 
 %.o: %.c
 				@gcc $(FLAGS) -I $(DIR_HEADERS) -c $< -o $@
