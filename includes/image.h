@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 22:06:29 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:54:15 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/10/17 14:00:44 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct		s_args
 }					t_args;
 
 void				put_pixel(t_args *args, int y, int color);
-void				*thread_function(void *arguments);
-t_args				*new_s_args(t_mlx *my_mlx, int i, pthread_mutex_t *lock);
+void				*thread_function(t_args *args);
+t_args				*new_s_args(t_mlx *my_mlx, int i);
 void				create_image(t_mlx	*my_mlx);
 
 #endif
