@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 02:43:42 by lmartin           #+#    #+#             */
-/*   Updated: 2020/10/06 14:03:42 by jherrald         ###   ########.fr       */
+/*   Updated: 2020/10/18 18:38:50 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 # endif
 
 # ifndef LIMIT_RES_X
-#  define LIMIT_RES_X 1980
+#  define LIMIT_RES_X 5120
 # endif
 
 # ifndef LIMIT_RES_Y
-#  define LIMIT_RES_Y 1080
+#  define LIMIT_RES_Y 2880
 # endif
 
 # include <fcntl.h>
