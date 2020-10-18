@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 09:29:56 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:55:14 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/10/18 21:42:44 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,7 @@ t_lstobjects *lights, t_scene *scene, t_lstobjects *objects)
 		free(lovs->color[0]);
 		lights = lights->next;
 	}
-	free(lovs);
 	ret_color = rgb_to_color(lovs->color[2]);
-	free(lovs->color[2]);
+	free(lovs);
 	return (ret_color);
 }
