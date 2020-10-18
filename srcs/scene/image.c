@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 15:38:27 by jherrald          #+#    #+#             */
-/*   Updated: 2020/10/17 17:26:52 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/10/18 22:05:47 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	*thread_function(t_args *args)
 	if (!(t_camera *)args->scene->cameras)
 		return (free_cpy_scene(args->scene) ? NULL : NULL);
 	obs = ((t_camera *)args->scene->cameras->object)->origin;
-	y = -(args->scene->viewport->height / 2);
+	y = -(args->scene->viewport->height / 2) + 1;
 	while (++y <= args->scene->viewport->height / 2)
 	{
 		d = new_vector(
