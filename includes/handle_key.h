@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 23:02:57 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:54:14 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/10/19 16:59:05 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define KEYCODE_DOWN 126
 # define KEYCODE_1 84
 # define KEYCODE_2 83
+# define KEYCODE_G 5
+# define KEYCODE_B 11
 
 int		exit_program(void);
 int		handle_key(int keycode, t_mlx *my_mlx);

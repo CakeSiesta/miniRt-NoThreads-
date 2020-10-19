@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 23:01:49 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 18:54:18 by lmartin          ###   ########.fr       */
+/*   Updated: 2020/10/19 16:59:01 by jherrald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ int		handle_key(int k, t_mlx *my_mlx)
 	r->x += ((k == KEYCODE_DOWN) ? -0.1 : 0) + ((k == KEYCODE_UP) ? 0.1 : 0);
 	r->y += ((k == KEYCODE_LEFT) ? -0.1 : 0) + ((k == KEYCODE_RIGHT) ? 0.1 : 0);
 	r->z += ((k == KEYCODE_1) ? -0.1 : 0) + ((k == KEYCODE_2) ? 0.1 : 0);
+	// THERE WAS AN ATTEMPT
+	if (k == KEYCODE_G)
+		if (my_mlx->scene->objects->reflective < 0.81)
+			my_mlx->scene->objects->reflective += 0.2;
 	if (k == KEYCODE_Q)
 		my_mlx->scene->cameras = (t_lstobjects *)my_mlx->scene->cameras->prev;
 	if (k == KEYCODE_E)
