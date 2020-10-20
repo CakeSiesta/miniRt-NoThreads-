@@ -6,7 +6,7 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 02:43:42 by lmartin           #+#    #+#             */
-/*   Updated: 2020/10/18 21:43:42 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/10/20 21:12:08 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 **	minilibx
 */
 
-# include <mlx.h>
+# include "mlx.h"
 # include "mlx_struct.h"
 
 /*
