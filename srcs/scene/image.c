@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 15:38:27 by jherrald          #+#    #+#             */
-/*   Updated: 2020/10/18 22:05:47 by mkravetz         ###   ########.fr       */
+/*   Updated: 2020/10/20 21:02:04 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,6 @@ void	create_image(t_mlx *my_mlx)
 		args = new_s_args(my_mlx, i);
 		thread_function(args);
 	}
-	while (i) // goes from i (width - 1) down to 0
-		i--;
 	i = my_mlx->scene->viewport->width;
 	while (--i)
 		wait(NULL);
