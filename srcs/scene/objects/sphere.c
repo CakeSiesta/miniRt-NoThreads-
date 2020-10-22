@@ -13,7 +13,7 @@
 #include "error.h"
 #include "sphere.h"
 
-t_sphere		*new_sphere(float radius, t_vector *color, float shiny,
+t_sphere		*new_sphere(double radius, t_vector *color, double shiny,
 t_vector *center)
 {
 	t_sphere	*sphere;

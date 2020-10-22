@@ -16,7 +16,7 @@ int		parsing_sphere(t_scene **scene, char *l)
 {
 	int			i[3];
 	t_vector	*center;
-	float		radius;
+	double		radius;
 	t_vector	*color;
 
 	i[0] = 2;
@@ -80,7 +80,7 @@ int		parsing_square(t_scene **scene, char *l)
 	int			i[3];
 	t_vector	*color;
 	t_vector	*vectors[2];
-	float		size;
+	double		size;
 
 	i[0] = 2;
 	i[2] = 0;
@@ -142,7 +142,7 @@ int		parsing_cylinder(t_scene **scene, char *l)
 	int			i[3];
 	t_vector	*color;
 	t_vector	*vec[2];
-	float		j[2];
+	double		j[2];
 
 	i[0] = 2;
 	i[2] = 0;

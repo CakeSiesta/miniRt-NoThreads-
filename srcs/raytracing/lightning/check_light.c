@@ -26,10 +26,10 @@ void *object)
 void	check_light_intersect_plan(t_lightning_vectors *l_vectors,
 void *object, t_light *light)
 {
-	float		k[4];
+	double		k[4];
 	t_vector	*temp[3];
-	float		denom;
-	float		t;
+	double		denom;
+	double		t;
 
 	temp[1] = scale_vectors(-1, *((t_plan *)object)->normal);
 	denom = -(dot_vectors(*((t_plan *)object)->normal, *(
@@ -52,8 +52,8 @@ void	check_light_triangle(t_lightning_vectors *l_vectors, void *object,
 t_light *light)
 {
 	t_vector	*v[6];
-	float		k[4];
-	float		t;
+	double		k[4];
+	double		t;
 
 	v[1] = substract_vectors(*((t_triangle *)object)->b,
 *((t_triangle *)object)->a);
@@ -82,10 +82,10 @@ void	check_light_square(t_lightning_vectors *l_vectors, void *object,
 t_light *light)
 {
 	t_vector	*temp2;
-	float		k[4];
+	double		k[4];
 	t_vector	*point;
 	t_vector	*temp;
-	float		t;
+	double		t;
 
 	temp2 = scale_vectors(-1, *((t_square *)object)->orientation);
 	k[0] = dot_vectors(*light->vector, *((t_square *)object)->orientation) -

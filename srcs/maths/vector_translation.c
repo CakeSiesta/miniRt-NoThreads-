@@ -34,7 +34,7 @@ t_vector		*substract_vectors(t_vector v1, t_vector v2)
 	return (new_vector(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z));
 }
 
-t_vector		*scale_vectors(float k, t_vector v2)
+t_vector		*scale_vectors(double k, t_vector v2)
 {
 	return (new_vector((k * v2.x), (k * v2.y), (k * v2.z)));
 }

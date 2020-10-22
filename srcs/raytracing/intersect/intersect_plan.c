@@ -12,11 +12,11 @@
 
 #include "minirt.h"
 
-float		intersect_plan(t_vector origin, t_vector direction, t_plan *object)
+double		intersect_plan(t_vector origin, t_vector direction, t_plan *object)
 {
-	float denom;
-	float b;
-	float t;
+	double denom;
+	double b;
+	double t;
 
 	t = 0;
 	if (!object->prev_origin || !is_equal(object->prev_origin, &origin))

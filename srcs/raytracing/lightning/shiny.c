@@ -12,13 +12,13 @@
 
 #include "minirt.h"
 
-float		calcul_shiny(t_lightning_vectors *l_vectors, t_light *light,
-float length_v, t_vector *vec_l)
+double		calcul_shiny(t_lightning_vectors *l_vectors, t_light *light,
+double length_v, t_vector *vec_l)
 {
-	float		r_dot_v;
+	double		r_dot_v;
 	t_vector	*vec_r;
 	t_vector	*temp;
-	float		intensity;
+	double		intensity;
 
 	intensity = 0;
 	temp = scale_vectors(2.0 * dot_vectors(*l_vectors->normal,

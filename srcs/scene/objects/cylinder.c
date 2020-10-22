@@ -13,12 +13,12 @@
 #include "error.h"
 #include "minirt.h"
 
-t_cylinder	*new_cylinder(t_vector *vectors[2], float diameter, float height,
+t_cylinder	*new_cylinder(t_vector *vectors[2], double diameter, double height,
 t_vector *color)
 {
 	t_cylinder	*new;
 	t_vector	*temp;
-	float		total;
+	double		total;
 
 	if (!(new = malloc(sizeof(t_cylinder))))
 		print_error_and_exit(-7);

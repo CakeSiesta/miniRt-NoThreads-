@@ -13,7 +13,7 @@
 #include "error.h"
 #include "lstobjects.h"
 
-t_lstobjects		*new_obj(int type, void *object, float reflective)
+t_lstobjects		*new_obj(int type, void *object, double reflective)
 {
 	t_lstobjects *obj;
 
@@ -27,7 +27,7 @@ t_lstobjects		*new_obj(int type, void *object, float reflective)
 }
 
 int					add_back(t_lstobjects **lst, int type, void *object,
-float reflective)
+double reflective)
 {
 	t_lstobjects *begin;
 

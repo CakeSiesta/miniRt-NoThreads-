@@ -44,7 +44,7 @@ int		parsing_resolution(t_scene **scene, char *line)
 int		parsing_ambient_light(t_scene **scene, char *l)
 {
 	int			i[2];
-	float		intensity;
+	double		intensity;
 	t_vector	*c;
 
 	i[0] = 1;
@@ -74,7 +74,7 @@ int		parsing_point_light(t_scene **scene, char *l)
 {
 	int			i[3];
 	t_vector	*v[2];
-	float		intensity;
+	double		intensity;
 
 	i[0] = 1;
 	i[1] = 0;

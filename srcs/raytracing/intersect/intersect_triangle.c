@@ -12,14 +12,14 @@
 
 #include "minirt.h"
 
-float		intersect_triangle2(float t, t_vector origin, t_vector direction,
+double		intersect_triangle2(double t, t_vector origin, t_vector direction,
 t_triangle *object)
 {
 	t_vector		*temp;
 	t_vector		*point;
-	float			dot_wv_wu[2];
+	double			dot_wv_wu[2];
 	t_vector		*w;
-	float			r[2];
+	double			r[2];
 
 	temp = scale_vectors(t, direction);
 	point = add_vectors(origin, *temp);
@@ -39,12 +39,12 @@ dot_wv_wu[1]) / object->var_d;
 	return (t);
 }
 
-float		intersect_triangle(t_vector origin, t_vector direction,
+double		intersect_triangle(t_vector origin, t_vector direction,
 t_triangle *object)
 {
-	float			denom;
-	float			b;
-	float			t;
+	double			denom;
+	double			b;
+	double			t;
 
 	t = 0;
 	if (!object->prev_origin || !is_equal(object->prev_origin, &origin))

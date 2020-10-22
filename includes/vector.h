@@ -17,9 +17,9 @@
 
 typedef struct	s_vector
 {
-	float		x;
-	float		y;
-	float		z;
+	double		x;
+	double		y;
+	double		z;
 }				t_vector;
 
 typedef struct	s_lightning_vectors
@@ -27,21 +27,21 @@ typedef struct	s_lightning_vectors
 	t_vector	*point;
 	t_vector	*normal;
 	t_vector	*view;
-	float		shiny;
+	double		shiny;
 }				t_lightning_vectors;
 
 /*
 ** Calculation
 */
-float			length_vectors(t_vector v);
-float			distance_points(t_vector p1, t_vector p2);
-float			dot_vectors(t_vector v1, t_vector v2);
+double			length_vectors(t_vector v);
+double			distance_points(t_vector p1, t_vector p2);
+double			dot_vectors(t_vector v1, t_vector v2);
 t_vector		*cross(t_vector u, t_vector v);
 t_vector		*product_scalar(t_vector u, t_vector v);
 t_vector		*add_vectors(t_vector v1, t_vector v2);
 t_vector		*substract_vectors(t_vector v1, t_vector v2);
 t_vector		*scale_vectors_rotation(t_vector r, t_vector v2);
-t_vector		*scale_vectors(float k, t_vector v2);
+t_vector		*scale_vectors(double k, t_vector v2);
 
 /*
 ** Color
@@ -53,7 +53,7 @@ void			rearrange_rgb(t_vector *color);
 /*
 ** Vector
 */
-t_vector		*new_vector(float x, float y, float z);
+t_vector		*new_vector(double x, double y, double z);
 t_vector		*cpy_vector(t_vector *vector);
 int				is_equal(t_vector *a, t_vector *b);
 

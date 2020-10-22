@@ -12,10 +12,10 @@
 
 #include "minirt.h"
 
-float		intersect_global(t_vector origin, t_vector direction,
+double		intersect_global(t_vector origin, t_vector direction,
 t_lstobjects *objects)
 {
-	float	t;
+	double	t;
 
 	t = 0;
 	if (objects->type == TYPE_SPHERE)

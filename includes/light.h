@@ -23,13 +23,13 @@
 typedef struct	s_light
 {
 	int			type;
-	float		intensity;
+	double		intensity;
 	t_vector	*color;
 	t_vector	*vector;
 }				t_light;
 
-t_light			*new_default_light(int type, float intensity, t_vector *color);
-t_light			*new_point_light(t_vector *pos, float intensity,
+t_light			*new_default_light(int type, double intensity, t_vector *color);
+t_light			*new_point_light(t_vector *pos, double intensity,
 t_vector *color);
 
 #endif

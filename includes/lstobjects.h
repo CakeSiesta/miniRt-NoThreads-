@@ -27,14 +27,14 @@ typedef struct		s_lstobjects
 {
 	int				type;
 	void			*object;
-	float			reflective;
+	double			reflective;
 	void			*prev;
 	void			*next;
 }					t_lstobjects;
 
-t_lstobjects		*new_obj(int type, void *object, float reflective);
+t_lstobjects		*new_obj(int type, void *object, double reflective);
 int					add_back(t_lstobjects **lst, int type, void *object,
-float reflective);
+double reflective);
 t_lstobjects		*cpy_lstobjects(t_lstobjects *obj);
 
 #endif

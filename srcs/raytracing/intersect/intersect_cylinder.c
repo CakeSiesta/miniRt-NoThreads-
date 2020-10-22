@@ -12,13 +12,13 @@
 
 #include "minirt.h"
 
-float		intersect_cylinder5(float d[8], t_vector origin, t_vector direction,
+double		intersect_cylinder5(double d[8], t_vector origin, t_vector direction,
 t_cylinder *o)
 {
 	t_vector	*temp;
 	t_vector	*point;
-	float		denom;
-	float		l[2];
+	double		denom;
+	double		l[2];
 
 	denom = -(dot_vectors(*o->orientation, *o->point2));
 	l[0] = dot_vectors(origin, *o->orientation) + denom;
@@ -42,13 +42,13 @@ t_cylinder *o)
 	return (d[4]);
 }
 
-float		intersect_cylinder4(float d[8], t_vector origin, t_vector direction,
+double		intersect_cylinder4(double d[8], t_vector origin, t_vector direction,
 t_cylinder *o)
 {
 	t_vector	*temp;
 	t_vector	*point;
-	float		denom;
-	float		l[2];
+	double		denom;
+	double		l[2];
 
 	denom = -(dot_vectors(*o->orientation, *o->point1));
 	l[0] = dot_vectors(origin, *o->orientation) + denom;
@@ -70,14 +70,14 @@ t_cylinder *o)
 	return (intersect_cylinder5(d, origin, direction, o));
 }
 
-float		intersect_cylinder3(float d[8], t_vector origin, t_vector direction,
+double		intersect_cylinder3(double d[8], t_vector origin, t_vector direction,
 t_cylinder *o)
 {
 	t_vector	*temp[2];
 	t_vector	*point;
-	float		denom;
+	double		denom;
 	t_vector	*point_tmp;
-	float		tt;
+	double		tt;
 
 	temp[0] = scale_vectors(d[4], direction);
 	point = add_vectors(origin, *temp[0]);
@@ -96,14 +96,14 @@ t_cylinder *o)
 	return (intersect_cylinder4(d, origin, direction, o));
 }
 
-float		intersect_cylinder2(float ret, t_vector origin, t_vector direction,
+double		intersect_cylinder2(double ret, t_vector origin, t_vector direction,
 t_cylinder *object)
 {
 	t_vector	*temp;
 	t_vector	*point;
-	float		denom;
+	double		denom;
 	t_vector	*point_tmp;
-	float		d[8];
+	double		d[8];
 
 	d[4] = ret;
 	temp = scale_vectors(ret, direction);
@@ -122,13 +122,13 @@ t_cylinder *object)
 	return (intersect_cylinder3(d, origin, direction, object));
 }
 
-float		intersect_cylinder(t_vector origin, t_vector direction,
+double		intersect_cylinder(t_vector origin, t_vector direction,
 t_cylinder *o)
 {
-	float var_b;
-	float d[6];
-	float delta;
-	float ret;
+	double var_b;
+	double d[6];
+	double delta;
+	double ret;
 
 	init_cylinder_intersect_cylinder(origin, o);
 	var_b = dot_vectors(direction, *o->orientation);

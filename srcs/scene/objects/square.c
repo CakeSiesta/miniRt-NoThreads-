@@ -31,7 +31,7 @@ void		place_points(t_square **new)
 	(*new)->d = add_vectors(*vector[3], *(*new)->center);
 }
 
-t_square	*new_square(t_vector *center, t_vector *orientation, float size,
+t_square	*new_square(t_vector *center, t_vector *orientation, double size,
 t_vector *color)
 {
 	t_square	*new;

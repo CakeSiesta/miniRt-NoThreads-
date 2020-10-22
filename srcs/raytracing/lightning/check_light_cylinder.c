@@ -14,9 +14,9 @@
 
 void	check(t_lightning_vectors *l_vectors, void *object, t_light *light)
 {
-	float			denom;
-	float			k[4];
-	float			t;
+	double			denom;
+	double			k[4];
+	double			t;
 	t_vector		*temp[2];
 	t_vector		*point;
 
@@ -40,7 +40,7 @@ length_vectors(*temp[1]), *temp[1]);
 void	check_face(t_lightning_vectors *l_vectors, void *object,
 t_scene_direction *s_d, t_light *light)
 {
-	float		k[4];
+	double		k[4];
 	t_vector	*temp;
 	t_vector	*point;
 	t_scene		*scene;
@@ -70,8 +70,8 @@ void	check_ext(t_lightning_vectors *l_vectors, void *object,
 t_scene_direction *s_d, t_light *light)
 {
 	t_vector		*temp[2];
-	float			denom;
-	float			k[4];
+	double			denom;
+	double			k[4];
 	t_scene			*scene;
 	t_vector		direction;
 

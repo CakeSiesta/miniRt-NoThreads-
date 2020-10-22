@@ -25,12 +25,12 @@ typedef struct	s_triangle
 	t_vector	*v;
 	t_vector	*normal;
 	t_vector	*color;
-	float		shiny;
-	float		var_a;
-	float		dot_uu;
-	float		dot_uv;
-	float		dot_vv;
-	float		var_d;
+	double		shiny;
+	double		var_a;
+	double		dot_uu;
+	double		dot_uv;
+	double		dot_vv;
+	double		var_d;
 	t_vector	*prev_origin;
 }				t_triangle;
 

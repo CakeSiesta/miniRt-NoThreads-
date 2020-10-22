@@ -21,7 +21,7 @@ t_vector	*color_to_rgb(unsigned int color)
 	blue = (int)(color % 256);
 	green = (int)(((color - blue) / 256) % 256);
 	red = (int)(((color - blue) / (256 * 256)) - green / 256);
-	return (new_vector((float)red, (float)green, (float)blue));
+	return (new_vector((double)red, (double)green, (double)blue));
 }
 
 int			rgb_to_color(t_vector *rgb)

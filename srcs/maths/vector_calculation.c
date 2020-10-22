@@ -12,18 +12,18 @@
 
 #include "minirt.h"
 
-float			length_vectors(t_vector v)
+double			length_vectors(t_vector v)
 {
 	return (sqrt(dot_vectors(v, v)));
 }
 
-float			distance_points(t_vector p1, t_vector p2)
+double			distance_points(t_vector p1, t_vector p2)
 {
 	return (sqrt((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) *
 (p2.y - p1.y) + (p2.z - p1.z) * (p2.z - p1.z)));
 }
 
-float			dot_vectors(t_vector v1, t_vector v2)
+double			dot_vectors(t_vector v1, t_vector v2)
 {
 	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }

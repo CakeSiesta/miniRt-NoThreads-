@@ -26,12 +26,12 @@ typedef struct		s_scene
 	t_lstobjects	*cameras;
 	t_lstobjects	*objects;
 	t_lstobjects	*lights;
-	float			total_intensity;
+	double			total_intensity;
 	int				nb_camera;
 	int				background_color;
 	int				depth;
-	float			t_min;
-	float			t_max;
+	double			t_min;
+	double			t_max;
 }					t_scene;
 
 t_scene				*new_empty_scene(int color);

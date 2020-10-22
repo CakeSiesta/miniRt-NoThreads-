@@ -21,17 +21,17 @@
 
 void		init_cylinder_intersect_cylinder(t_vector origin,
 t_cylinder *object);
-float		intersect_global(t_vector origin, t_vector direction,
+double		intersect_global(t_vector origin, t_vector direction,
 t_lstobjects *objects);
-float		intersect_sphere(t_vector origin, t_vector direction,
+double		intersect_sphere(t_vector origin, t_vector direction,
 t_sphere *object);
-float		intersect_plan(t_vector origin, t_vector direction,
+double		intersect_plan(t_vector origin, t_vector direction,
 t_plan *object);
-float		intersect_square(t_vector origin, t_vector direction,
+double		intersect_square(t_vector origin, t_vector direction,
 t_square *object);
-float		intersect_triangle(t_vector origin, t_vector direction,
+double		intersect_triangle(t_vector origin, t_vector direction,
 t_triangle *object);
-float		intersect_cylinder(t_vector origin, t_vector direction,
+double		intersect_cylinder(t_vector origin, t_vector direction,
 t_cylinder *object);
 
 #endif

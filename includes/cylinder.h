@@ -22,19 +22,19 @@ typedef struct	s_cylinder
 	t_vector	*orientation;
 	t_vector	*point1;
 	t_vector	*point2;
-	float		diameter;
-	float		height;
+	double		diameter;
+	double		height;
 	t_vector	*color;
-	float		shiny;
+	double		shiny;
 	t_vector	*difference;
-	float		var_a;
-	float		var_c;
-	float		var_d;
+	double		var_a;
+	double		var_c;
+	double		var_d;
 	t_vector	*prev_origin;
 }				t_cylinder;
 
 t_cylinder		*new_cylinder(t_vector *vectors[2],
-float diameter, float height, t_vector *color);
+double diameter, double height, t_vector *color);
 void			free_cylinder(t_cylinder *cylinder);
 t_cylinder		*cpy_cylinder(t_cylinder *cylinder);
 

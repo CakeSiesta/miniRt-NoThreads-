@@ -12,14 +12,14 @@
 
 #include "minirt.h"
 
-float		intersect_square2(float t, t_vector origin, t_vector direction,
+double		intersect_square2(double t, t_vector origin, t_vector direction,
 t_square *object)
 {
 	t_vector	*point;
 	t_vector	*temp;
 	t_vector	*ap;
-	float		alpha;
-	float		beta;
+	double		alpha;
+	double		beta;
 
 	temp = scale_vectors(t, direction);
 	point = add_vectors(origin, *temp);
@@ -36,12 +36,12 @@ dot_vectors(*object->ac, *object->ac);
 	return (0);
 }
 
-float		intersect_square(t_vector origin, t_vector direction,
+double		intersect_square(t_vector origin, t_vector direction,
 t_square *object)
 {
-	float denom;
-	float alpha;
-	float beta;
+	double denom;
+	double alpha;
+	double beta;
 
 	beta = 0;
 	if (!object->prev_origin || !is_equal(object->prev_origin, &origin))

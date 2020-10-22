@@ -27,15 +27,15 @@ typedef struct	s_square
 	t_vector	*ab;
 	t_vector	*ac;
 	t_vector	*normal;
-	float		size;
+	double		size;
 	t_vector	*color;
-	float		shiny;
-	float		var_a;
+	double		shiny;
+	double		var_a;
 	t_vector	*prev_origin;
 }				t_square;
 
 t_square		*new_square(t_vector *center, t_vector *orientation,
-float size, t_vector *color);
+double size, t_vector *color);
 void			free_square(t_square *square);
 t_square		*cpy_square(t_square *square);
 

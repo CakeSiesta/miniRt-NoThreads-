@@ -13,7 +13,7 @@
 #include "error.h"
 #include "vector.h"
 
-t_vector		*new_vector(float x, float y, float z)
+t_vector		*new_vector(double x, double y, double z)
 {
 	t_vector	*vector;
 

@@ -57,10 +57,10 @@ t_light *light, t_scene *scene, t_lstobjects *objects)
 		check_light_square(l_vectors, object, light);
 }
 
-float		compute_special_lights(t_lightning_vectors *l_vectors,
+double		compute_special_lights(t_lightning_vectors *l_vectors,
 t_light *light, t_scene *scene, t_lstobjects *objects)
 {
-	float			i_n_dot_l[2];
+	double			i_n_dot_l[2];
 	t_vector		*vec_l;
 	t_lstobjects	*shadow_obj;
 	t_vector		direction;
@@ -90,7 +90,7 @@ length_vectors(*l_vectors->view), vec_l);
 int			compute_lightning(t_lightning_vectors *l_vectors,
 t_lstobjects *lights, t_scene *scene, t_lstobjects *objects)
 {
-	float		intensity;
+	double		intensity;
 	int			ret_color;
 	t_l_o_v_s	*lovs;
 

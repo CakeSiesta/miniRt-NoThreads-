@@ -36,14 +36,14 @@ int		ft_atoi(char *line, int *nb)
 
 /*
 ** FT_ATOF
-** ascii to float
+** ascii to double
 */
 
-int		ft_atof(char *line, float *nb)
+int		ft_atof(char *line, double *nb)
 {
 	int			i;
 	int			nnb;
-	float		sub_zero;
+	double		sub_zero;
 
 	if ((i = ft_atoi(line, &nnb)) < 0)
 		return (-1);
@@ -95,7 +95,7 @@ int		ft_atoc(char *line, t_vector **color)
 /*
 ** FT_ATOV
 ** ascii to vector (t_vector vector)
-** Note : The difference with ft_atoc is that it check for float.
+** Note : The difference with ft_atoc is that it check for double.
 */
 
 int		ft_atov(char *line, t_vector **vector)
@@ -103,7 +103,7 @@ int		ft_atov(char *line, t_vector **vector)
 	int		i;
 	int		r;
 	int		n;
-	float	v[3];
+	double	v[3];
 
 	i = 0;
 	n = 0;

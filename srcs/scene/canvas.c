@@ -13,7 +13,7 @@
 #include "error.h"
 #include "canvas.h"
 
-t_canvas		*new_canvas(float width, float heigth, float distance)
+t_canvas		*new_canvas(double width, double heigth, double distance)
 {
 	t_canvas	*canvas;
 

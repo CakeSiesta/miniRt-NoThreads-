@@ -12,7 +12,7 @@
 
 #include "minirt.h"
 
-void	set_color_ambient(t_vector *color[4], float *intensity,
+void	set_color_ambient(t_vector *color[4], double *intensity,
 t_lstobjects *lights)
 {
 	*intensity += ((t_light *)lights->object)->intensity;
@@ -26,7 +26,7 @@ color[2]->z + ((color[1]->z + color[3]->z) * (*intensity)));
 	rearrange_rgb(color[0]);
 }
 
-void	set_color_special_lights(float *intensity, t_l_o_v_s *lovs,
+void	set_color_special_lights(double *intensity, t_l_o_v_s *lovs,
 t_lstobjects *objects, t_lstobjects *lights)
 {
 	(*intensity) += compute_special_lights(lovs->l_vectors, (t_light *)

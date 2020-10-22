@@ -14,7 +14,7 @@
 #include "minirt.h"
 
 int			setup_l_vectors_and_calculate(t_lstobjects *closest_object,
-t_vector direction, float closest_t, t_scene *scene)
+t_vector direction, double closest_t, t_scene *scene)
 {
 	int						final_color;
 	t_lightning_vectors		*l_vectors;
@@ -38,11 +38,11 @@ l_vectors, final_color);
 	return (final_color);
 }
 
-float		closest_intersection(t_vector origin, t_vector direction,
+double		closest_intersection(t_vector origin, t_vector direction,
 t_scene *scene, t_lstobjects **closest_object)
 {
-	float					t_temp;
-	float					closest_t;
+	double					t_temp;
+	double					closest_t;
 	t_lstobjects			*objects;
 
 	*closest_object = NULL;
@@ -65,7 +65,7 @@ scene->t_max == -1) && (t_temp < closest_t || closest_t == -1))
 
 int			trace_ray(t_vector direction, t_scene *scene)
 {
-	float				closest_t;
+	double				closest_t;
 	t_lstobjects			*closest_object;
 	int				color;
 

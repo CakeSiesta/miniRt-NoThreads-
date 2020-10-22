@@ -15,9 +15,9 @@
 
 # include "vector.h"
 
-void		rx(t_vector *vect, float x);
-void		ry(t_vector *vect, float y);
-void		rz(t_vector *vect, float z);
+void		rx(t_vector *vect, double x);
+void		ry(t_vector *vect, double y);
+void		rz(t_vector *vect, double z);
 void		rot(t_vector *vect, t_vector *angle);
 void		anti_rot(t_vector *vect, t_vector *angle);
 

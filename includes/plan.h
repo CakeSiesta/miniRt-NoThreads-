@@ -20,9 +20,9 @@ typedef struct	s_plan
 {
 	t_vector	*point;
 	t_vector	*normal;
-	float		shiny;
+	double		shiny;
 	t_vector	*color;
-	float		var_a;
+	double		var_a;
 	t_vector	*prev_origin;
 }				t_plan;
 

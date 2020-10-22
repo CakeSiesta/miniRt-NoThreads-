@@ -17,11 +17,11 @@
 
 typedef	struct	s_canvas
 {
-	float		width;
-	float		height;
-	float		distance;
+	double		width;
+	double		height;
+	double		distance;
 }				t_canvas;
 
-t_canvas		*new_canvas(float width, float heigth, float distance);
+t_canvas		*new_canvas(double width, double heigth, double distance);
 
 #endif

@@ -18,17 +18,17 @@
 
 typedef struct	s_sphere
 {
-	float		radius;
+	double		radius;
 	t_vector	*color;
-	float		shiny;
-	float		var_c;
+	double		shiny;
+	double		var_c;
 	t_vector	*difference;
 	t_vector	*center;
 	t_vector	*prev_origin;
 }				t_sphere;
 
-t_sphere		*new_sphere(float radius, t_vector *color,
-float shiny, t_vector *center);
+t_sphere		*new_sphere(double radius, t_vector *color,
+double shiny, t_vector *center);
 void			free_sphere(t_sphere *sphere);
 t_sphere		*cpy_sphere(t_sphere *sphere);
 

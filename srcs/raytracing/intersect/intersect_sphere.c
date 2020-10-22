@@ -12,12 +12,12 @@
 
 #include "minirt.h"
 
-float		intersect_sphere(t_vector origin,
+double		intersect_sphere(t_vector origin,
 t_vector direction, t_sphere *object)
 {
-	float		discriminant;
-	float		k[2];
-	float		t[2];
+	double		discriminant;
+	double		k[2];
+	double		t[2];
 
 	if (!object->prev_origin || !is_equal(object->prev_origin, &origin))
 	{

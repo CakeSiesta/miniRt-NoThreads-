@@ -12,7 +12,7 @@
 
 #include "minirt.h"
 
-void		rx(t_vector *vect, float x)
+void		rx(t_vector *vect, double x)
 {
 	t_vector	tmp;
 
@@ -22,7 +22,7 @@ void		rx(t_vector *vect, float x)
 	*vect = tmp;
 }
 
-void		ry(t_vector *vect, float y)
+void		ry(t_vector *vect, double y)
 {
 	t_vector	tmp;
 
@@ -32,7 +32,7 @@ void		ry(t_vector *vect, float y)
 	*vect = tmp;
 }
 
-void		rz(t_vector *vect, float z)
+void		rz(t_vector *vect, double z)
 {
 	t_vector	tmp;
 
