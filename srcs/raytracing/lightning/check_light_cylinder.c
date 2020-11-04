@@ -101,10 +101,8 @@ void *object, t_scene_direction *s_d, t_light *light)
 {
 	t_vector		*temp;
 	t_vector		*temp2;
-	t_scene			*scene;
 	t_vector		direction;
 
-	scene = s_d->scene;
 	direction = *(s_d->direction);
 	temp2 = NULL;
 	temp = substract_vectors(*l_vectors->point, *(

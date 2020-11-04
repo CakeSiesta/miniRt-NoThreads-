@@ -96,6 +96,4 @@ void	create_image(t_mlx *my_mlx)
 		thread_function(args);
 	}
 	i = my_mlx->scene->viewport->width;
-	while (--i)
-		wait(NULL);
 }

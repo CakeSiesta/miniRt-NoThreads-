@@ -50,7 +50,7 @@ int		ft_atof(char *line, double *nb)
 	*nb = nnb;
 	if (line[i] == '.')
 		i++;
-	sub_zero = (nb < 0) ? -0.1 : 0.1;
+	sub_zero = (*nb < 0) ? -0.1 : 0.1;
 	while (line[i] && line[i] >= '0' && line[i] <= '9')
 	{
 		*nb += sub_zero * (line[i++] - '0');
