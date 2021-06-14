@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 13:48:07 by mkravetz          #+#    #+#             */
-/*   Updated: 2021/06/14 14:38:20 by mkravetz         ###   ########.fr       */
+/*   Updated: 2021/06/14 15:44:52 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,14 @@ int	parsing_sphere(t_scene **scene, char *l)
 	}
 	if (l[i[0]] && l[i[0]] != ' ' && l[i[0]] != '\t')
 		return (free_and_return_minus_one(center));
-//	if ((!l[i[0]] && !(add_back(&(*scene)->objects, TYPE_SPHERE, new_sphere
-//							(radius, color, 10, center), 0.4)) ? 0 : -1))
+	if (!l[i[0]] && !(add_back(&(*scene)->objects, TYPE_SPHERE, new_sphere
+				(radius, color, 10, center), 0.4)))
+		return (0);
+	else
+		return (-1);
 
-	return ((!l[i[0]] && !(add_back(&(*scene)->objects, TYPE_SPHERE, new_sphere
-							(radius, color, 10, center), 0.4)) ? 0 : -1));
+//	return ((!l[i[0]] && !(add_back(&(*scene)->objects, TYPE_SPHERE, new_sphere
+//							(radius, color, 10, center), 0.4)) ? 0 : -1));
 }
 
 /* pl  0.0,0.0,0.0  0.0,0.0,1.0  0,0,255
