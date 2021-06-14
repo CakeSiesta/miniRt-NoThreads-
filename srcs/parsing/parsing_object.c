@@ -6,14 +6,14 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 13:48:07 by mkravetz          #+#    #+#             */
-/*   Updated: 2021/06/14 15:44:52 by mkravetz         ###   ########.fr       */
+/*   Updated: 2021/06/14 16:11:11 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 /* i[1] = 0		i[1] == 1		i[1] == 2
-** sp 0,0,0		5				255,255,255
+** sp 0,0,0		5,23			255,255,255
 */
 int	parsing_sphere(t_scene **scene, char *l)
 {
@@ -25,7 +25,7 @@ int	parsing_sphere(t_scene **scene, char *l)
 	i[0] = 2;
 	i[2] = 0;
 	i[1] = -1;
-	while (++i[1] < 4 && (i[0] += i[2]) && (l[i[0]] == ' ' || l[i[0]] == '\t'))
+	while (++i[1] < 4 && (l[i[0]] == ' ' || l[i[0]] == '\t'))
 	{
 		while (l[i[0]] == ' ' || l[i[0]] == '\t')
 			i[0]++;
@@ -37,11 +37,23 @@ int	parsing_sphere(t_scene **scene, char *l)
 			if (i[2] < 0)
 				return (-1);
 		}
-		if (((i[1] == 1) && ((l[i[0]] < '0' || l[i[0]] > '9')
-					|| (i[2] = ft_atof(&l[i[0]], &radius)) < 0))
-			|| ((i[1] == 2) && ((l[i[0]] < '0' || l[i[0]] > '9')
-					|| (i[2] = ft_atoc(&l[i[0]], &color)) < 0)))
+		if ((i[1] == 1) && ((l[i[0]] < '0' || l[i[0]] > '9')))
 			return (free_and_return_minus_one(center));
+		if (i[1] == 1)
+		{
+			i[2] = ft_atof(&l[i[0]], &radius);
+			if (i[2] < 0)
+				return (free_and_return_minus_one(center));
+		}
+		if ((i[1] == 2) && ((l[i[0]] < '0' || l[i[0]] > '9')))
+			return (free_and_return_minus_one(center));
+		if (i[1] == 2)
+		{
+			i[2] = ft_atoc(&l[i[0]], &color);
+			if (i[2] < 0)
+				return (free_and_return_minus_one(center));
+		}
+		i[0] += i[2];
 	}
 	if (l[i[0]] && l[i[0]] != ' ' && l[i[0]] != '\t')
 		return (free_and_return_minus_one(center));
@@ -50,9 +62,6 @@ int	parsing_sphere(t_scene **scene, char *l)
 		return (0);
 	else
 		return (-1);
-
-//	return ((!l[i[0]] && !(add_back(&(*scene)->objects, TYPE_SPHERE, new_sphere
-//							(radius, color, 10, center), 0.4)) ? 0 : -1));
 }
 
 /* pl  0.0,0.0,0.0  0.0,0.0,1.0  0,0,255
