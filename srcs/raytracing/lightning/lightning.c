@@ -63,11 +63,9 @@ t_light *light, t_scene *scene, t_lstobjects *objects)
 	double			i_n_dot_l[2];
 	t_vector		*vec_l;
 	t_lstobjects	*shadow_obj;
-	t_vector		direction;
 
 	i_n_dot_l[0] = 0;
 	vec_l = type_light(l_vectors, light, scene);
-	direction = *scale_vectors(-1, *l_vectors->view);
 	closest_intersection(*l_vectors->point, *vec_l, scene, &shadow_obj);
 	if (!shadow_obj)
 	{
