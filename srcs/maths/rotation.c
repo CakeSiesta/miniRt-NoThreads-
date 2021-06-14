@@ -6,13 +6,13 @@
 /*   By: lmartin <lmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:48:08 by lmartin           #+#    #+#             */
-/*   Updated: 2019/12/04 16:55:56 by lmartin          ###   ########.fr       */
+/*   Updated: 2021/06/14 08:43:25 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void		rx(t_vector *vect, double x)
+void	rx(t_vector *vect, double x)
 {
 	t_vector	tmp;
 
@@ -22,7 +22,7 @@ void		rx(t_vector *vect, double x)
 	*vect = tmp;
 }
 
-void		ry(t_vector *vect, double y)
+void	ry(t_vector *vect, double y)
 {
 	t_vector	tmp;
 
@@ -32,7 +32,7 @@ void		ry(t_vector *vect, double y)
 	*vect = tmp;
 }
 
-void		rz(t_vector *vect, double z)
+void	rz(t_vector *vect, double z)
 {
 	t_vector	tmp;
 
@@ -42,14 +42,14 @@ void		rz(t_vector *vect, double z)
 	*vect = tmp;
 }
 
-void		rot(t_vector *vect, t_vector *angle)
+void	rot(t_vector *vect, t_vector *angle)
 {
 	rx(vect, angle->x);
 	ry(vect, angle->y);
 	rz(vect, angle->z);
 }
 
-void		anti_rot(t_vector *vect, t_vector *angle)
+void	anti_rot(t_vector *vect, t_vector *angle)
 {
 	rz(vect, -angle->z);
 	ry(vect, -angle->y);
