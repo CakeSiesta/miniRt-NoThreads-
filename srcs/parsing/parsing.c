@@ -6,13 +6,13 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 15:39:07 by jherrald          #+#    #+#             */
-/*   Updated: 2020/10/16 17:26:37 by jherrald         ###   ########.fr       */
+/*   Updated: 2021/06/14 13:43:05 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int			choice_parsing(t_scene **scene, char *line)
+int	choice_parsing(t_scene **scene, char *line)
 {
 	if (line[0] != '\0')
 	{
@@ -40,7 +40,7 @@ int			choice_parsing(t_scene **scene, char *line)
 	return (0);
 }
 
-void		setup_cameras(t_scene **scene)
+void	setup_cameras(t_scene **scene)
 {
 	int				nb_cam;
 	t_lstobjects	*cameras;
@@ -62,7 +62,7 @@ void		setup_cameras(t_scene **scene)
 	(*scene)->nb_camera = nb_cam;
 }
 
-void		setup_viewplane(t_scene **scene)
+void	setup_viewplane(t_scene **scene)
 {
 	if (!(*scene)->viewport)
 		print_error_and_exit(-5);
@@ -73,14 +73,14 @@ void		setup_viewplane(t_scene **scene)
 	if ((*scene)->viewport->height > LIMIT_RES_Y)
 		(*scene)->viewport->height = LIMIT_RES_Y;
 	if ((*scene)->viewport->height < (*scene)->viewport->width)
-		(*scene)->viewplane = new_canvas((*scene)->viewport->width /
-(*scene)->viewport->height, 1, 1);
+		(*scene)->viewplane = new_canvas((*scene)->viewport->width
+				/ (*scene)->viewport->height, 1, 1);
 	else
-		(*scene)->viewplane = new_canvas(1, (*scene)->viewport->height /
-(*scene)->viewport->width, 1);
+		(*scene)->viewplane = new_canvas(1, (*scene)->viewport->height
+				/ (*scene)->viewport->width, 1);
 }
 
-t_scene		*parsing(int fd)
+t_scene	*parsing(int fd)
 {
 	int				ret;
 	char			*line;
@@ -103,7 +103,7 @@ t_scene		*parsing(int fd)
 /*
 ** Returns i (= lenght of .rt file) or ERROR msg if .rt incorrect
 */
-int			open_and_check_error(char *filename, int *fd)
+int	open_and_check_error(char *filename, int *fd)
 {
 	int		i;
 
