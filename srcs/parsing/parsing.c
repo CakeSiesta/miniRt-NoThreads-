@@ -6,7 +6,7 @@
 /*   By: jherrald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 15:39:07 by jherrald          #+#    #+#             */
-/*   Updated: 2021/06/14 13:43:05 by mkravetz         ###   ########.fr       */
+/*   Updated: 2021/06/23 14:11:55 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	setup_cameras(t_scene **scene)
 			nb_cam++;
 			cameras = cameras->next;
 		}
-		cameras->next = (*scene)->cameras; // former la boucle de cameras
+		cameras->next = (*scene)->cameras;
 		(*scene)->cameras->prev = cameras;
 	}
 	(*scene)->nb_camera = nb_cam;
@@ -87,15 +87,18 @@ t_scene	*parsing(int fd)
 	t_scene			*scene;
 
 	scene = new_empty_scene(BACKGROUND_COLOR);
-	while ((ret = get_next_line(fd, &line)) > 0)
+	ret = get_next_line(fd, &line);
+	while (ret > 0)
 	{
-		if ((ret = choice_parsing(&scene, line)) < 0)
+		ret = choice_parsing(&scene, line);
+		if (ret < 0)
 			return (NULL);
 		free(line);
+		ret = get_next_line(fd, &line);
 	}
-	if (ret < 0) // removed [|| choice_parsing(&scene, line)] condition
+	if (ret < 0)
 		return (NULL);
-	setup_cameras(&scene); // setup boucle de cameras
+	setup_cameras(&scene);
 	setup_viewplane(&scene);
 	return (scene);
 }
@@ -107,7 +110,8 @@ int	open_and_check_error(char *filename, int *fd)
 {
 	int		i;
 
-	if ((*fd = open(filename, O_RDONLY)) <= 0)
+	*fd = open(filename, O_RDONLY);
+	if (*fd <= 0)
 		print_error_and_exit(-1);
 	i = 0;
 	while (filename[i] != '.' && filename[i])

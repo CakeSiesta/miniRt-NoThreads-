@@ -1,2 +1,14 @@
 *.swp
 .DS_Store
+*.o
+libmlx.a
+libmlx.dylib
+miniRT
+minilibx_mms/libmlx.dylib
+minilibx_mms/mlx_image.swiftdoc
+minilibx_mms/mlx_image.swiftmodule
+minilibx_mms/mlx_init.swiftdoc
+minilibx_mms/mlx_init.swiftmodule
+minilibx_mms/mlx_window.swiftdoc
+minilibx_mms/mlx_window.swiftmodule
+minilibx_opengl/libmlx.a
